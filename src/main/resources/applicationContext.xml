@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+	   http://www.springframework.org/schema/task
+	   http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <util:properties id="config" location="classpath:/config.dev.properties"/>
+
+    <!-- 配置文件 -->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="propertiesArray">
+            <array>
+                <ref bean="config"/>
+            </array>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="driverClassName" value="${jdbc_driverClass}"/>
+        <property name="url" value="${jdbc_url}"/>
+        <property name="username" value="${jdbc_username}"/>
+        <property name="password" value="${jdbc_password}"/>
+        <property name="filters">
+            <value>stat</value>
+        </property>
+        <property name="maxActive">
+            <value>20</value>
+        </property>
+        <property name="initialSize">
+            <value>1</value>
+        </property>
+        <property name="maxWait">
+            <value>60000</value>
+        </property>
+        <property name="minIdle">
+            <value>1</value>
+        </property>
+        <property name="timeBetweenEvictionRunsMillis">
+            <value>60000</value>
+        </property>
+        <property name="minEvictableIdleTimeMillis">
+            <value>300000</value>
+        </property>
+        <property name="validationQuery">
+            <value>SELECT 'x'</value>
+        </property>
+        <property name="testWhileIdle">
+            <value>true</value>
+        </property>
+        <property name="testOnBorrow">
+            <value>false</value>
+        </property>
+        <property name="testOnReturn">
+            <value>false</value>
+        </property>
+        <property name="poolPreparedStatements">
+            <value>true</value>
+        </property>
+        <property name="maxOpenPreparedStatements">
+            <value>20</value>
+        </property>
+    </bean>
+    <!--数据库执行监测-->
+    <bean id="druid-stat-interceptor"
+          class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
+    </bean>
+    <bean id="druid-type-proxyCreator"
+          class="com.alibaba.druid.support.spring.stat.BeanTypeAutoProxyCreator">
+        <!-- 所有ABCInterface的派生类被拦截监控 -->
+        <property name="targetBeanType" value="com.mac.manager.dao.BaseDao"/>
+        <property name="interceptorNames">
+            <list>
+                <value>druid-stat-interceptor</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- hibernate 事务配置 -->
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <!--
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="acceptExisting" value="false"/>
+        <property name="cacheManagerName" value="ehCacheManager"/>
+        <property name="configLocation" value="classpath:ehcache.xml"/>
+        <property name="shared" value="true"/>
+    </bean>
+    -->
+    <!--ehcache 缓存配置
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="transactionAware" value="true"/>
+        <property name="cacheManager" ref="ehcache"/>
+    </bean>
+    -->
+    <!-- hibernate 数据库配置 -->
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan">
+            <array>
+                <value>com.mac.**.dao.entity</value>
+            </array>
+        </property>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="connection.autoReconnect">true</prop>
+                <prop key="connection.autoReconnectForPools">true</prop>
+                <prop key="hibernate.current_session_context_class">
+                    org.springframework.orm.hibernate4.SpringSessionContext
+                </prop>
+                <prop key="hibernate.c3p0.acquire_increment">1</prop>
+                <prop key="hibernate.c3p0.idle_test_period">0</prop>
+                <prop key="hibernate.c3p0.timeout">0</prop>
+                <prop key="hibernate.c3p0.validate">true</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://115.28.45.153:3306/mac</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+            </props>
+        </property>
+    </bean>
+    <!--Service 方法名事务配置
+    -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="del*" propagation="REQUIRED"/>
+            <tx:method name="insert*" propagation="REQUIRED"/>
+            <tx:method name="create*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="modify*" propagation="REQUIRED"/>
+            <tx:method name="change*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="remove*" propagation="REQUIRED"/>
+            <tx:method name="active*" propagation="REQUIRED"/>
+            <tx:method name="send*" propagation="REQUIRED"/>
+            <tx:method name="receive*" propagation="REQUIRED"/>
+            <tx:method name="*" read-only="false" propagation="SUPPORTS"/>
+        </tx:attributes>
+    </tx:advice>
+    <!-- 配置事务切入到Service包下的各个方法中
+    -->
+    <aop:config proxy-target-class="true">
+        <aop:advisor advice-ref="txAdvice"
+                     pointcut="execution(* com.mac.manager..service..*.*(..))"/>
+    </aop:config>
+
+    <!--开启注解事务配置-->
+    <tx:annotation-driven transaction-manager="transactionManager"
+                          proxy-target-class="true"/>
+
+    <!--&lt;!&ndash;根据注解注入&ndash;&gt;-->
+    <!--<context:annotation-config/>-->
+
+    <!--&lt;!&ndash;自动注册注解的组件&ndash;&gt;-->
+    <!--<context:component-scan base-package="com.mac.manager">-->
+        <!--&lt;!&ndash;-->
+        <!--<context:exclude-filter type="annotation"-->
+                                <!--expression="org.springframework.stereotype.Controller"/>-->
+        <!--<context:exclude-filter type="annotation"-->
+                                <!--expression="org.springframework.web.bind.annotation.RequestMapping"/>-->
+        <!--&ndash;&gt;-->
+    <!--</context:component-scan>-->
+
+    <!--开启注解任务调度配置-->
+    <task:annotation-driven/>
+
+    <!--开启注解缓存配置
+    <cache:annotation-driven cache-manager="cacheManager"/>
+    -->
+
+</beans>

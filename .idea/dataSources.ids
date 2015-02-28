@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - mac@localhost" uuid="d2228a30-3087-44ab-92b4-b20a2d349007">
+    <database-info product="MySQL" version="5.6.19-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="mac"/>
+    <table name="menu" schema="" catalog="mac" type="TABLE">
+      <column name="dish_id" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12" remarks="6I+c5ZOBSUQ="/>
+      <column name="dish_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB5ZCN56ew"/>
+      <column name="dish_english_name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB6Iux5paH5ZCN"/>
+      <column name="dish_type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6I+c5ZOB57G75Z6LIDE654Gr6ZSFLDI66YWS5rC0LDM66KW/54K5"/>
+      <column name="dish_price" sqlType="DECIMAL" precision="6" scale="2" nullable="true" jdbcType="3" remarks="6I+c5ZOB5Lu35qC8"/>
+      <column name="dish_description" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB5o+P6L+w"/>
+      <column name="spicy_level" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6bq76L6j562J57qnLDDkuLrkuI3ovqM="/>
+      <column name="hot_level" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="54Gr54Ot56iL5bqm"/>
+      <column name="dish_imgurl" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB5Zu+54mH6Lev5b6E"/>
+      <column name="dish_price2" sqlType="DECIMAL" precision="6" scale="2" nullable="true" jdbcType="3" remarks="5aSn5Lu95Lu35qC8"/>
+      <column name="dish_origin" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="5Lqn5Zyw"/>
+      <column name="dish_capacity" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5a656YeP"/>
+      <primary-key name="PRIMARY" columns="dish_id"/>
+    </table>
+    <table name="wx_base_info" schema="" catalog="mac" type="TABLE">
+      <column name="mp_id" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12" remarks="5YWs5LyX5Y+35Y6f5aeLSUQ="/>
+      <column name="mp_name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="5YWs5LyX5Y+35ZCN56ew"/>
+      <column name="mp_type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5YWs5LyX5Y+357G75Z6LIDE65pyN5Yqh5Y+3LDI66K6i6ZiF5Y+3"/>
+      <column name="mp_description" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="5YWs5LyX5Y+35o+P6L+w"/>
+      <column name="domain_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="5Zue6LCD5Z+f5ZCN"/>
+      <column name="wx_id" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="5b6u5L+h5Y+3"/>
+      <column name="app_id" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="5bqU55SoSUQ="/>
+      <column name="app_secret" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12" remarks="5bqU55So56eY6ZKl"/>
+      <column name="token" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5Luk54mM"/>
+      <column name="url" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="5pyN5Yqh5Zmo5Zyw5Z2A"/>
+      <column name="encoding_aes_key" sqlType="VARCHAR" precision="43" scale="0" nullable="true" jdbcType="12" remarks="5raI5oGv5Yqg6Kej5a+G56eY6ZKl"/>
+      <column name="enconding_type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5raI5oGv5Yqg5a+G5pa55byPIDE65piO5paH5qih5byPLDI65YW85a655qih5byPLDM65a6J5YWo5qih5byP"/>
+      <column name="fans_quantity" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5YWz5rOo5Lq65pWw"/>
+      <column name="verified" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6K6k6K+B5oOF5Ya1IDE65bey6K6k6K+BLDI65pyq6K6k6K+B"/>
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12" remarks="6YKu566x"/>
+      <primary-key name="PRIMARY" columns="mp_id"/>
+    </table>
+  </data-source>
+  <data-source name="MySQL - mac@115.28.45.153" uuid="6c9f04d5-7c3f-460a-bb02-b13f800921e3">
+    <database-info product="MySQL" version="5.6.23-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="mac"/>
+    <table name="category" schema="" catalog="mac" type="TABLE">
+      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="57G75YirSUQ=" autoIncrement="true"/>
+      <column name="category_name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="57G75Yir5ZCN56ew"/>
+      <column name="category_order" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="57G75Yir5o6S5bqP"/>
+      <primary-key name="PRIMARY" columns="category_id"/>
+      <exported-key name="fk_reference_1" table="menu" schema="" catalog="mac" columns="category_id"/>
+    </table>
+    <table name="menu" schema="" catalog="mac" type="TABLE">
+      <column name="dish_id" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12" remarks="6I+c5ZOBSUQ="/>
+      <column name="dish_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB5ZCN56ew"/>
+      <column name="dish_english_name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB6Iux5paH5ZCN"/>
+      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6I+c5ZOB57G75Z6LIDE654Gr6ZSFLDI66YWS5rC0LDM66KW/54K5"/>
+      <column name="dish_price" sqlType="DECIMAL" precision="6" scale="2" nullable="true" jdbcType="3" remarks="6I+c5ZOB5Lu35qC8"/>
+      <column name="dish_description" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB5o+P6L+w"/>
+      <column name="spicy_level" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6bq76L6j562J57qnLDDkuLrkuI3ovqM="/>
+      <column name="hot_level" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="54Gr54Ot56iL5bqm"/>
+      <column name="dish_imgurl" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB5Zu+54mH6Lev5b6E"/>
+      <column name="dish_price2" sqlType="DECIMAL" precision="6" scale="2" nullable="true" jdbcType="3" remarks="5aSn5Lu95Lu35qC8"/>
+      <column name="dish_origin" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="5Lqn5Zyw"/>
+      <column name="dish_capacity" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5a656YeP"/>
+      <column name="dish_unit" sqlType="VARCHAR" precision="8" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB5Y2V5L2N"/>
+      <column name="dish_group" sqlType="VARCHAR" precision="4" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB5YiG57uE"/>
+      <column name="dish_order" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6I+c5ZOB5o6S5bqP"/>
+      <primary-key name="PRIMARY" columns="dish_id"/>
+      <foreign-key name="fk_reference_1" columns="category_id" ref-table="category" ref-schema="" ref-catalog="mac" ref-columns="category_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_reference_1" unique="false" columns="category_id"/>
+    </table>
+    <table name="wx_base_info" schema="" catalog="mac" type="TABLE">
+      <column name="mp_id" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12" remarks="5YWs5LyX5Y+35Y6f5aeLSUQ="/>
+      <column name="mp_name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="5YWs5LyX5Y+35ZCN56ew"/>
+      <column name="mp_type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5YWs5LyX5Y+357G75Z6LIDE65pyN5Yqh5Y+3LDI66K6i6ZiF5Y+3"/>
+      <column name="mp_description" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="5YWs5LyX5Y+35o+P6L+w"/>
+      <column name="domain_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="5Zue6LCD5Z+f5ZCN"/>
+      <column name="wx_id" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="5b6u5L+h5Y+3"/>
+      <column name="app_id" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="5bqU55SoSUQ="/>
+      <column name="app_secret" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12" remarks="5bqU55So56eY6ZKl"/>
+      <column name="token" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5Luk54mM"/>
+      <column name="url" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="5pyN5Yqh5Zmo5Zyw5Z2A"/>
+      <column name="encoding_aes_key" sqlType="VARCHAR" precision="43" scale="0" nullable="true" jdbcType="12" remarks="5raI5oGv5Yqg6Kej5a+G56eY6ZKl"/>
+      <column name="enconding_type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5raI5oGv5Yqg5a+G5pa55byPIDE65piO5paH5qih5byPLDI65YW85a655qih5byPLDM65a6J5YWo5qih5byP"/>
+      <column name="fans_quantity" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5YWz5rOo5Lq65pWw"/>
+      <column name="verified" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6K6k6K+B5oOF5Ya1IDE65bey6K6k6K+BLDI65pyq6K6k6K+B"/>
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12" remarks="6YKu566x"/>
+      <primary-key name="PRIMARY" columns="mp_id"/>
+    </table>
+  </data-source>
+</component>

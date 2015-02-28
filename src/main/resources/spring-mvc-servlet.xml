@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 配置文件 -->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="propertiesArray">
+            <array>
+                <ref bean="config"/>
+            </array>
+        </property>
+    </bean>
+
+
+    <bean id="handlerMapping"
+          class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+        <property name="alwaysUseFullPath" value="true"/>
+        <!--后缀匹配开启？  /frame.do 是否匹配 /frame -->
+        <property name="useSuffixPatternMatch" value="true"/>
+        <property name="useTrailingSlashMatch" value="true"/>
+
+    </bean>
+
+
+    <bean
+            class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver">
+        <property name="messageConverters">
+            <list>
+                <bean class='org.springframework.http.converter.ByteArrayHttpMessageConverter'/>
+                <bean class='org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter'/>
+                <bean class='org.springframework.http.converter.StringHttpMessageConverter'></bean>
+                <bean class='org.springframework.http.converter.ResourceHttpMessageConverter'></bean>
+                <bean class='org.springframework.http.converter.xml.SourceHttpMessageConverter'></bean>
+                <bean class='org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter'></bean>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                    <property name="supportedMediaTypes">
+                        <list>
+                            <value>text/html;charset=UTF-8</value>
+                            <value>application/json;charset=UTF-8</value>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="conversionService" class="org.springframework.format.support.DefaultFormattingConversionService">
+    </bean>
+
+    <bean name='handlerAdapter'
+          class='org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter'>
+        <property name='webBindingInitializer'>
+            <bean class='org.springframework.web.bind.support.ConfigurableWebBindingInitializer'>
+                <property name='conversionService' ref='conversionService'></property>
+            </bean>
+        </property>
+        <property name='messageConverters'>
+            <list>
+                <bean class='org.springframework.http.converter.ByteArrayHttpMessageConverter'/>
+                <bean class='org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter'/>
+                <bean class='org.springframework.http.converter.StringHttpMessageConverter'></bean>
+                <bean class='org.springframework.http.converter.ResourceHttpMessageConverter'></bean>
+                <bean class='org.springframework.http.converter.xml.SourceHttpMessageConverter'></bean>
+                <bean class='org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter'></bean>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+
+                    <property name="supportedMediaTypes">
+                        <list>
+                            <value>text/html;charset=UTF-8</value>
+                            <value>application/json;charset=UTF-8</value>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/menu/**"/>
+            <mvc:mapping path="/customer/**"/>
+            <mvc:exclude-mapping path="/admin/login.do"/>
+            <mvc:exclude-mapping path="/admin/static/**"/>
+            <bean id="adminInterceptor" class="com.mac.manager.web.AdminInterceptor">
+
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+    <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+            p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"
+            p:viewClass="org.springframework.web.servlet.view.InternalResourceView"/>
+
+    <!-- 上传拦截，如最大上传值及最小上传值 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+          p:defaultEncoding="utf-8">
+        <!-- one of the properties available; the maximum file size in bytes -->
+        <property name="maxUploadSize" value="107374182400"/>
+    </bean>
+    <aop:config proxy-target-class="true">
+        <aop:advisor advice-ref="txAdvice"
+                     pointcut="execution(* com.mac..service..*.*(..))"/>
+    </aop:config>
+    <mvc:annotation-driven enable-matrix-variables="true" />
+
+    <!--根据注解注入-->
+    <context:annotation-config/>
+
+    <!--自动注册注解的组件-->
+    <context:component-scan base-package="com.mac.manager">
+        <!--
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.web.bind.annotation.RequestMapping"/>
+        -->
+    </context:component-scan>
+
+    <bean id="weChatApp" class="com.sdyc.wx.WeChatApp">
+        <property name="appId" value="${wx_appId}"/>
+        <property name="appSecret" value="${wx_appSecret}"/>
+        <property name="mpId" value="${wx_innerId}"/>
+        <property name="redirectUrl" value="${site_baseUrl}/wechat/auth.do"/>
+        <property name="token" value="${wx_token}"/>
+    </bean>
+    <bean id="weChat" class="com.sdyc.wx.api.WeChat">
+        <constructor-arg name="app" ref="weChatApp"/>
+        <property name="eventHandler">
+            <bean class="com.mac.app.wechat.WechatEventHandler"></bean>
+        </property>
+        <property name="messageHandler">
+            <bean class="com.mac.app.wechat.WechatMessageHandler"></bean>
+        </property>
+    </bean>
+    <!--
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true"/>
+    </bean>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+    -->
+</beans>

@@ -49,7 +49,7 @@
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
     <schema name="" catalog="mac"/>
     <table name="category" schema="" catalog="mac" type="TABLE">
-      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="57G75YirSUQ=" autoIncrement="true"/>
+      <column name="category_id" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12" remarks="57G75YirSUQ="/>
       <column name="category_name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="57G75Yir5ZCN56ew"/>
       <column name="category_order" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="57G75Yir5o6S5bqP"/>
       <primary-key name="PRIMARY" columns="category_id"/>
@@ -59,7 +59,7 @@
       <column name="dish_id" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12" remarks="6I+c5ZOBSUQ="/>
       <column name="dish_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB5ZCN56ew"/>
       <column name="dish_english_name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB6Iux5paH5ZCN"/>
-      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6I+c5ZOB57G75Z6LIDE654Gr6ZSFLDI66YWS5rC0LDM66KW/54K5"/>
+      <column name="category_id" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB57G75Z6LIOeBq+mUhSzphZLmsLQs6KW/54K5562J"/>
       <column name="dish_price" sqlType="DECIMAL" precision="6" scale="2" nullable="true" jdbcType="3" remarks="6I+c5ZOB5Lu35qC8"/>
       <column name="dish_description" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="6I+c5ZOB5o+P6L+w"/>
       <column name="spicy_level" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6bq76L6j562J57qnLDDkuLrkuI3ovqM="/>
@@ -74,6 +74,7 @@
       <primary-key name="PRIMARY" columns="dish_id"/>
       <foreign-key name="fk_reference_1" columns="category_id" ref-table="category" ref-schema="" ref-catalog="mac" ref-columns="category_id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="fk_reference_1" unique="false" columns="category_id"/>
+      <index name="senq" unique="false" columns="dish_id"/>
     </table>
     <table name="wx_base_info" schema="" catalog="mac" type="TABLE">
       <column name="mp_id" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12" remarks="5YWs5LyX5Y+35Y6f5aeLSUQ="/>

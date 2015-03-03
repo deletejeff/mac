@@ -1,24 +1,28 @@
 package com.mac.manager.dao.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 /**
- * Created by machao on 2015/2/28.
+ * Created by machao on 2015/3/2.
  */
 @Entity
 @Table(name = "category", schema = "", catalog = "mac")
 public class CategoryEntity {
-    private Integer categoryId;
+    private String categoryId;
     private String categoryName;
     private Integer categoryOrder;
 
     @Id
-    @Column(name = "category_id", nullable = false, insertable = true, updatable = true)
-    public Integer getCategoryId() {
+    @GenericGenerator(name = "generator", strategy = "uuid.hex")
+    @GeneratedValue(generator = "generator")
+    @Column(name = "category_id", nullable = false, insertable = true, updatable = true, length = 36)
+    public String getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Integer categoryId) {
+    public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
 

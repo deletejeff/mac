@@ -3,6 +3,7 @@ package com.mac.manager.service.impl;
 import com.mac.common.bean.Page;
 import com.mac.common.bean.PageList;
 import com.mac.manager.dao.MenuDao;
+import com.mac.manager.dao.entity.CategoryEntity;
 import com.mac.manager.dao.entity.MenuEntity;
 import com.mac.manager.service.MenuService;
 import com.mac.manager.vo.MenuVo;
@@ -58,6 +59,9 @@ public class MenuServiceImpl implements MenuService {
     public boolean addDish(MenuVo menuVo) {
         MenuEntity menuEntity = new MenuEntity();
         BeanUtils.copyProperties(menuVo, menuEntity);
+        CategoryEntity categoryEntity = new CategoryEntity();
+        categoryEntity.setCategoryId("1");
+        menuEntity.setCategoryByCategoryId(categoryEntity);
         this.menuDao.save(menuEntity);
         return true;
     }

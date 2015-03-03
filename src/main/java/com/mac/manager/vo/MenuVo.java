@@ -20,11 +20,14 @@ public class MenuVo {
     private String dishUnit;
     private String dishGroup;
     private Integer dishOrder;
-    private Integer categoryId;
+    private String categoryId;
     private String categoryName;
     private Integer categoryOrder;
 
-    public MenuVo(String dishId, String dishName, String dishEnglishName, BigDecimal dishPrice, String dishDescription, Integer spicyLevel, Integer hotLevel, String dishImgurl, BigDecimal dishPrice2, String dishOrigin, Integer dishCapacity, String dishUnit, String dishGroup, Integer dishOrder, Integer categoryId, String categoryName, Integer categoryOrder) {
+    public MenuVo() {
+    }
+
+    public MenuVo(String dishId, String dishName, String dishEnglishName, BigDecimal dishPrice, String dishDescription, Integer spicyLevel, Integer hotLevel, String dishImgurl, BigDecimal dishPrice2, String dishOrigin, Integer dishCapacity, String dishUnit, String dishGroup, Integer dishOrder, String categoryId, String categoryName, Integer categoryOrder) {
         this.dishId = dishId;
         this.dishName = dishName;
         this.dishEnglishName = dishEnglishName;
@@ -42,6 +45,22 @@ public class MenuVo {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
         this.categoryOrder = categoryOrder;
+    }
+
+    public MenuVo(String dishName, String dishEnglishName, BigDecimal dishPrice, String dishDescription, Integer spicyLevel, Integer hotLevel, String dishImgurl, BigDecimal dishPrice2, String dishOrigin, Integer dishCapacity, String dishUnit, String dishGroup, Integer dishOrder) {
+        this.dishName = dishName;
+        this.dishEnglishName = dishEnglishName;
+        this.dishPrice = dishPrice;
+        this.dishDescription = dishDescription;
+        this.spicyLevel = spicyLevel;
+        this.hotLevel = hotLevel;
+        this.dishImgurl = dishImgurl;
+        this.dishPrice2 = dishPrice2;
+        this.dishOrigin = dishOrigin;
+        this.dishCapacity = dishCapacity;
+        this.dishUnit = dishUnit;
+        this.dishGroup = dishGroup;
+        this.dishOrder = dishOrder;
     }
 
     public String getDishId() {
@@ -156,11 +175,11 @@ public class MenuVo {
         this.dishOrder = dishOrder;
     }
 
-    public Integer getCategoryId() {
+    public String getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Integer categoryId) {
+    public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
 

@@ -117,7 +117,7 @@
         <label for="dishOrder">菜品排列顺序</label>
         <input type="number" id="dishOrder" name="dishOrder" placeholder="请填写菜品排列顺序">
     </div>
-    <p><button type="submit" id="dish_add" class="am-btn am-btn-lg am-center">确认</button></p>
+    <p><button type="submit" id="add_dish" class="am-btn am-btn-lg am-center">确认</button></p>
 </form>
 <!--[if (gte IE 9)|!(IE)]><!-->
 <script src="../../../resources/assets/js/jquery.min.js"></script>

@@ -52,4 +52,12 @@ public class CategoryServiceImpl implements CategoryService {
         this.categoryDao.update(categoryEntity);
         return true;
     }
+
+    @Override
+    public CategoryVo getById(String categoryId) {
+        CategoryVo categoryVo = new CategoryVo();
+        CategoryEntity categoryEntity = this.categoryDao.getById(categoryId);
+        BeanUtils.copyProperties(categoryEntity, categoryVo);
+        return categoryVo;
+    }
 }

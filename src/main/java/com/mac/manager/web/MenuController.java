@@ -51,7 +51,7 @@ public class MenuController {
             map.put("msg", msg);
             map.put("success", true);
         }else{
-            map.put("msg", "操作失败!");
+            map.put("msg", msg);
             map.put("success", false);
         }
         return "manager/manager_menu";

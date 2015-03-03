@@ -98,6 +98,15 @@ public class WechatMessageHandler extends DefaultMessageHandlerImpl {
         }else if("地址".equals(message.getContent()) || "位置".equals(message.getContent()) || message.getContent().contains("导航") || message.getContent().contains("去这里")
                 || message.getContent().contains("去店里") || message.getContent().contains("怎么走")){
 //            respMessage = daohang(requestMap,fromUserName,toUserName);
+        }else if("测试".equals(message.getContent())){
+            List<NewsSyncMessage.Article> articleList = new ArrayList<NewsSyncMessage.Article>();
+            NewsSyncMessage.Article article = new NewsSyncMessage.Article();
+            article.setTitle("测试");
+            article.setDescription("");
+            article.setPicUrl("http://113.200.64.31/mac/images/ziqi.jpg");
+            article.setUrl("http://115.28.45.153/");
+            articleList.add(article);
+            return this.wxRespService.respMessageHandlerWithNews(message, articleList);
         }
         return null;
     }

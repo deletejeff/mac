@@ -15,7 +15,7 @@ public interface MenuService {
      * @param page
      * @return
      */
-    public PageList<MenuVo> findByPage(Page.Offset page, Integer categoryId);
+    public PageList<MenuVo> findByPage(Page.Offset page, String categoryId);
 
     /**
      * 添加菜品
@@ -37,4 +37,6 @@ public interface MenuService {
      * @return
      */
     public boolean updateDish(MenuVo menuVo);
+
+    public MenuVo getById(String dishId);
 }

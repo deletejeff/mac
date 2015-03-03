@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html class="no-js">
 <head>
@@ -39,20 +40,20 @@
     <script type="application/javascript" src="../../../resources/assets/js/amazeui.min.js"></script>
 </head>
 <body>
-<form class="am-form" action="/menu/add.do" method="post" enctype="multipart/form-data" data-am-validator>
+<form class="am-form" action="/menu/update.do" method="post" enctype="multipart/form-data" data-am-validator>
     <fieldset>
-        <legend>添加菜品</legend>
+        <legend>编辑菜品</legend>
     </fieldset>
-    <div class="am-hide">
-        <input type="text" id="dishId" name="dishId">
+    <div class="am-form-group">
+        <input type="text" id="dishId" name="dishId" value="${menuVo.dishId}" readonly>
     </div>
     <div class="am-form-group">
         <label for="dishName">名称</label>
-        <input type="text" id="dishName" name="dishName" placeholder="填写名称" required>
+        <input type="text" id="dishName" name="dishName" value="${menuVo.dishName}" required>
     </div>
     <div class="am-form-group">
         <label for="dishEnglishName">英文名</label>
-        <input type="text" id="dishEnglishName" name="dishEnglishName" placeholder="填写英文名称">
+        <input type="text" id="dishEnglishName" name="dishEnglishName" value="${menuVo.dishEnglishName}">
     </div>
     <div class="am-form-group">
         <label for="categoryId">分类</label>
@@ -62,11 +63,11 @@
     </div>
     <div class="am-form-group">
         <label for="dishPrice">价格</label>
-        <input type="number" id="dishPrice" name="dishPrice" placeholder="填写菜品价格" required>
+        <input type="number" id="dishPrice" name="dishPrice" value="${menuVo.dishPrice}" required>
     </div>
     <div class="am-form-group">
         <label for="dishDescription">描述</label>
-        <input type="text" id="dishDescription" name="dishDescription" placeholder="填写菜品介绍">
+        <input type="text" id="dishDescription" name="dishDescription" value="${menuVo.dishDescription}">
     </div>
     <div class="am-form-group">
         <label for="spicyLevel">麻辣等级</label>
@@ -89,26 +90,33 @@
         </select>
     </div>
     <div class="am-form-group">
-        <label for="multipartFile">上传图片</label>
-        <input type="file" id="multipartFile" name="multipartFile">
-        <p class="am-form-help">请选择要上传的文件...</p>
-        <div id="img_div"></div>
-    </div>
-    <div class="am-form-group">
         <label for="dishPrice2">大份价格</label>
-        <input type="number" id="dishPrice2" name="dishPrice2"  placeholder="填写菜品大份的价格">
+        <input type="number" id="dishPrice2" name="dishPrice2" value="${menuVo.dishPrice2}">
     </div>
     <div class="am-form-group">
         <label for="dishOrigin">产地</label>
-        <input type="text" id="dishOrigin" name="dishOrigin" placeholder="红酒系列请填写产地">
+        <input type="text" id="dishOrigin" name="dishOrigin" value="${menuVo.dishOrigin}">
+    </div>
+    <div class="am-form-group">
+        <div id="viewImg_div" hidden="hidden">
+            <img src="../${menuVo.dishImgurl}"/>
+            <input id="dishImgurl" name="dishImgurl" type="hidden" value="${menuVo.dishImgurl}"/>
+            <button id="delete_img" type="button" class="am-btn am-btn-sm">删除图片</button>
+        </div>
+        <div id="uploadImg_div" hidden="hidden">
+            <label for="multipartFile">图片</label>
+            <input type="file" id="multipartFile" name="multipartFile">
+            <p class="am-form-help">请选择要上传的文件...</p>
+            <div id="img_div"></div>
+        </div>
     </div>
     <div class="am-form-group">
         <label for="dishCapacity">容量</label>
-        <input type="number" id="dishCapacity" name="dishCapacity" placeholder="请填写容量">
+        <input type="number" id="dishCapacity" name="dishCapacity" value="${menuVo.dishCapacity}">
     </div>
     <div class="am-form-group">
         <label for="dishUnit">计量单位</label>
-        <input type="text" id="dishUnit" name="dishUnit" placeholder="请填写计量单位" required>
+        <input type="text" id="dishUnit" name="dishUnit" value="${menuVo.dishUnit}" required>
     </div>
     <div class="am-form-group">
         <label for="dishGroup">菜品系列分组</label>
@@ -116,7 +124,7 @@
     </div>
     <div class="am-form-group">
         <label for="dishOrder">菜品排列顺序</label>
-        <input type="number" id="dishOrder" name="dishOrder" placeholder="请填写菜品排列顺序">
+        <input type="number" id="dishOrder" name="dishOrder" value="${menuVo.dishOrder}">
     </div>
     <p><button type="submit" id="add_dish" class="am-btn am-btn-lg am-center">确认</button></p>
 </form>
@@ -134,7 +142,38 @@
             data = $.parseJSON(data);
             $('#categoryId').empty();
             $.each(data.list, function(i, item) {
-                $('#categoryId').append('<option value="' + item.categoryId +'">' + item.categoryName + '</option>');
+                if(item.categoryId == '${menuVo.categoryId}'){
+                    $('#categoryId').append('<option value="' + item.categoryId +'" selected>' + item.categoryName + '</option>');
+                }else{
+                    $('#categoryId').append('<option value="' + item.categoryId +'">' + item.categoryName + '</option>');
+                }
+            });
+        }
+    });
+    $('#spicyLevel').val('${menuVo.spicyLevel}');
+    $('#hotLevel').val('${menuVo.hotLevel}');
+    if('${menuVo.dishImgurl}' != ""){
+        $('#viewImg_div').show();
+    }else{
+        $('#viewImg_div').hide();
+        $('#uploadImg_div').show();
+    }
+    $('#delete_img').on('click', function(){
+        if(confirm('删除后无法恢复，确定删除吗？')){
+            $.ajax({
+                url: '/menu/delete_img.do',
+                type: 'post',
+                data: {
+                    dishId : '${menuVo.dishId}'
+                },
+                success:function (data) {
+                    data = $.parseJSON(data);
+                    if(data.success){
+                        $('#dishImgurl').val('');
+                        $('#viewImg_div').hide();
+                        $('#uploadImg_div').show();
+                    }
+                }
             });
         }
     });
@@ -154,6 +193,15 @@
         });
     });
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </script>
 </body>
 </html>

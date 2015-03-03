@@ -7,6 +7,7 @@ import com.mac.manager.dao.entity.CategoryEntity;
 import com.mac.manager.dao.entity.MenuEntity;
 import com.mac.manager.service.MenuService;
 import com.mac.manager.vo.MenuVo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class MenuServiceImpl implements MenuService {
     private MenuDao menuDao;
 
     @Override
-    public PageList<MenuVo> findByPage(Page.Offset page, Integer categoryId) {
+    public PageList<MenuVo> findByPage(Page.Offset page, String categoryId) {
         String hql = "select new " + MenuVo.class.getName() +" (" +
                 "m.dishId," +
                 "m.dishName," +
@@ -46,7 +47,7 @@ public class MenuServiceImpl implements MenuService {
                 "left join m.categoryByCategoryId c " +
                 "where 1=1 ";
         List<Object> params = new ArrayList<Object>();
-        if(categoryId != null){
+        if(StringUtils.isNotBlank(categoryId)){
             params.add(categoryId);
             hql += " and m.categoryByCategoryId.categoryId = ? ";
         }
@@ -60,7 +61,7 @@ public class MenuServiceImpl implements MenuService {
         MenuEntity menuEntity = new MenuEntity();
         BeanUtils.copyProperties(menuVo, menuEntity);
         CategoryEntity categoryEntity = new CategoryEntity();
-        categoryEntity.setCategoryId("1");
+        categoryEntity.setCategoryId(menuVo.getCategoryId());
         menuEntity.setCategoryByCategoryId(categoryEntity);
         this.menuDao.save(menuEntity);
         return true;
@@ -74,9 +75,25 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public boolean updateDish(MenuVo menuVo) {
-        MenuEntity menuEntity = new MenuEntity();
+        MenuEntity menuEntity = this.menuDao.loadById(menuVo.getDishId());
         BeanUtils.copyProperties(menuVo, menuEntity);
+        CategoryEntity categoryEntity = new CategoryEntity();
+        categoryEntity.setCategoryId(menuVo.getCategoryId());
+        categoryEntity.setCategoryName(menuVo.getCategoryName());
+        categoryEntity.setCategoryOrder(menuVo.getCategoryOrder());
+        menuEntity.setCategoryByCategoryId(categoryEntity);
         this.menuDao.update(menuEntity);
         return true;
+    }
+
+    @Override
+    public MenuVo getById(String dishId) {
+        MenuVo menuVo = new MenuVo();
+        MenuEntity menuEntity = this.menuDao.getById(dishId);
+        BeanUtils.copyProperties(menuEntity, menuVo);
+        menuVo.setCategoryId(menuEntity.getCategoryByCategoryId().getCategoryId());
+        menuVo.setCategoryName(menuEntity.getCategoryByCategoryId().getCategoryName());
+        menuVo.setCategoryOrder(menuEntity.getCategoryByCategoryId().getCategoryOrder());
+        return menuVo;
     }
 }

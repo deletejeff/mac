@@ -2,6 +2,7 @@ package com.mac.manager.web;
 
 import com.mac.common.bean.Page;
 import com.mac.common.bean.PageList;
+import com.mac.common.utils.RandomUtil;
 import com.mac.manager.service.MenuService;
 import com.mac.manager.vo.MenuVo;
 import org.apache.commons.io.FileUtils;
@@ -29,7 +30,7 @@ public class MenuController {
 
     @ResponseBody
     @RequestMapping("/list.do")
-    public Map<String, Object> pageList(Page.Offset page, Integer categoryId){
+    public Map<String, Object> pageList(Page.Offset page, String categoryId){
         Map<String, Object> map = new HashMap<String, Object>();
         PageList<MenuVo> pageList = this.menuService.findByPage(page, categoryId);
         if(pageList != null){
@@ -64,31 +65,40 @@ public class MenuController {
     }
     
     
-    @ResponseBody
     @RequestMapping(value = "/add.do", method = RequestMethod.POST)
-    public Map<String, Object> addDish(MenuVo menuVo, MultipartFile multipartFile, HttpServletRequest request) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    public String addDish(MenuVo menuVo, MultipartFile multipartFile, HttpServletRequest request) {
         String msg = null;
         try {
-            String realPath = request.getSession().getServletContext().getRealPath("/static/upload/images");
-            File file = new File(realPath + "/" +multipartFile.getOriginalFilename());
-            FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), file);
-            menuVo.setDishImgurl("static/upload/images/" + multipartFile.getOriginalFilename());
+            if(multipartFile.getSize()>0){
+                String realPath = request.getSession().getServletContext().getRealPath("/static/upload/images");
+                String fileType = multipartFile.getOriginalFilename().substring(
+                        multipartFile.getOriginalFilename().lastIndexOf(".")+1
+                );
+                String fileName = RandomUtil.getRandomFileName() + "." + fileType;
+                File file = new File(realPath + "/" + fileName);
+                FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), file);
+                menuVo.setDishImgurl("static/upload/images/" + fileName);
+            }
             this.menuService.addDish(menuVo);
-            map.put("success", true);
-            map.put("msg", msg);
+            msg = "add:success";
         } catch (Exception e) {
-            map.put("success", false);
-            map.put("msg", e.getMessage());
+            msg = "add:failure";
         }
-        return map;
+        return "redirect:list_manager.do?msg=" + msg;
     }
 
     @RequestMapping("/delete.do")
-    public String deleteByDishId(String dishId){
+    public String deleteByDishId(String dishId, HttpServletRequest request){
         String msg = null;
         try {
-//            this.menuService.deleteDish(dishId);
+            MenuVo menuVo = this.menuService.getById(dishId);
+            String realPath = request.getSession().getServletContext().getRealPath("/");
+            String filePath = realPath + menuVo.getDishImgurl();//文件的绝对路径
+            this.menuService.deleteDish(dishId);
+            File file = new File(filePath);
+            if(file.exists()) {
+                file.delete();
+            }
             msg = "delete:success";
         } catch (Exception e) {
             msg = "delete:failure";
@@ -96,18 +106,56 @@ public class MenuController {
         return "redirect:list_manager.do?msg=" + msg;
     }
 
-    @ResponseBody
-    @RequestMapping("/update.do")
-    public Map<String, Object> updateDish(MenuVo menuVo){
-        Map<String, Object> map = new HashMap<String, Object>();
+
+    @RequestMapping(value = "/update.do", method = RequestMethod.GET)
+    public String updateCategory(ModelMap map, String dishId) {
+        map.put("menuVo", this.menuService.getById(dishId));
+        return "manager/dish_update";
+    }
+
+
+    @RequestMapping(value = "/update.do", method = RequestMethod.POST)
+    public String updateDish(MenuVo menuVo, MultipartFile multipartFile, HttpServletRequest request){
         String msg = null;
         try {
+            if(multipartFile.getSize()>0){
+                String realPath = request.getSession().getServletContext().getRealPath("/static/upload/images");
+                String fileType = multipartFile.getOriginalFilename().substring(
+                        multipartFile.getOriginalFilename().lastIndexOf(".") + 1
+                );
+                String fileName = RandomUtil.getRandomFileName() + "." + fileType;
+                File file = new File(realPath + "/" + fileName);
+                FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), file);
+                menuVo.setDishImgurl("static/upload/images/" + fileName);
+            }
             this.menuService.updateDish(menuVo);
-            map.put("success", true);
-            map.put("msg", msg);
+            msg = "update:success";
         } catch (Exception e) {
-            map.put("success", false);
-            map.put("msg", e.getMessage());
+            msg = "update:failure";
+        }
+        return "redirect:list_manager.do?msg=" + msg;
+    }
+    
+    @ResponseBody
+    @RequestMapping("/delete_img.do")
+    public Map<String, Object> deleteImg(String dishId, HttpServletRequest request){
+        Map<String, Object> map = new HashMap<String, Object>();
+        try {
+            MenuVo menuVo = this.menuService.getById(dishId);
+            String realPath = request.getSession().getServletContext().getRealPath("/");
+            String filePath = realPath + menuVo.getDishImgurl();//文件的绝对路径
+            menuVo.setDishImgurl("");
+            this.menuService.updateDish(menuVo);
+            File file = new File(filePath);
+            if(file.exists()) {
+                file.delete();
+            }
+            map.put("success", true);
+            map.put("msg" , "删除成功!");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            map.put("success" , false);
+            map.put("msg" , "删除失败!");
         }
         return map;
     }

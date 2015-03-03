@@ -78,7 +78,7 @@ public class CategoryController {
             this.categoryService.addCategory(categoryVo);
             msg = "add:success";
         } catch (Exception e) {
-            msg = "add:success";
+            msg = "add:failure";
         }
         return "redirect:list_manager.do?msg=" + msg;
     }

@@ -88,7 +88,9 @@
                     </a>
                 </div>
                 <div class="am-btn-group">
-                <button type="button" class="am-btn am-btn-sm">编辑</button>
+                    <a href="/menu/update.do?dishId=${vo.dishId}" target="_self">
+                        <button type="button" class="am-btn am-btn-sm">编辑</button>
+                    </a>
             </div>
             </td>
         </tr>

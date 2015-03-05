@@ -39,7 +39,7 @@
 <h2>Welcome 老友记!</h2>
 <a href="menu.jsp" class="am-btn am-btn-secondary am-round"><i class="am-icon-cutlery"></i> 餐单</a>
 <a href="order.jsp" class="am-btn am-btn-secondary am-round"><i class="am-icon-cc-visa"></i> 订单</a>
-<p></p>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
 <a href="/menu/list_manager.do" class="am-btn am-btn-secondary am-round"><i class="am-icon-cog"></i> 菜单管理</a>
 <a href="/category/list_manager.do" class="am-btn am-btn-secondary am-round"><i class="am-icon-cog"></i> 类别管理</a>
 <script>

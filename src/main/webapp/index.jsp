@@ -34,10 +34,6 @@
 
     <link rel="stylesheet" href="resources/assets/css/amazeui.min.css">
     <link rel="stylesheet" href="resources/assets/css/app.css">
-    <script type="application/javascript" src="resources/assets/js/jquery.min.js"></script>
-    <script type="application/javascript" src="resources/assets/js/amazeui.min.js"></script>
-</head>
-    <script type="application/javascript" src="resources/jquery/jquery-1.9.1.min.js"></script>
 </head>
 <body>
 <h2>Welcome 老友记!</h2>

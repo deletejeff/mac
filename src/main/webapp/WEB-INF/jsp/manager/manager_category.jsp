@@ -39,52 +39,37 @@
     <script type="application/javascript" src="../../../resources/assets/js/amazeui.min.js"></script>
 </head>
 <body>
-<div class="am-btn-group">
-    <button type="button" class="am-btn am-btn-sm">添加菜品</button>
+<div class="am-cf">
+    <a href="/category/add.do" target="_self">
+        <button type="button" class="am-btn am-btn-sm">添加类别</button>
+    </a>
+    <label class="am-fr">${msg}</label>
 </div>
 <table class="am-table am-table-bordered am-table-striped am-table-hover">
     <thead>
-        <tr>
-            <th>名称</th>
-            <th>英文名</th>
-            <th>所属类型</th>
-            <th>价格</th>
-            <th width="240">描述</th>
-            <th>麻辣等级</th>
-            <th>火爆程度</th>
-            <th width="110">图片</th>
-            <th>大份价格</th>
-            <th>产地</th>
-            <th>容量</th>
-            <th>单位</th>
-            <th>分组</th>
-            <th>排序</th>
-            <th width="140">操作</th>
-        </tr>
+    <tr>
+        <th>ID</th>
+        <th>名称</th>
+        <th>排序</th>
+        <th>操作</th>
+    </tr>
     </thead>
-    <c:forEach items="${pageList.list}" var="vo" varStatus="status">
+    <c:forEach items="${list}" var="vo" varStatus="status">
         <tr>
-            <td>${vo.dishName}</td>
-            <td>${vo.dishEnglishName}</td>
+            <td>${vo.categoryId}</td>
             <td>${vo.categoryName}</td>
-            <td>${vo.dishPrice}</td>
-            <td>${vo.dishDescription}</td>
-            <td>${vo.spicyLevel}</td>
-            <td>${vo.hotLevel}</td>
-            <td><img src="../../../${vo.dishImgurl}"></td>
-            <td>${vo.dishPrice2}</td>
-            <td>${vo.dishOrigin}</td>
-            <td>${vo.dishCapacity}</td>
-            <td>${vo.dishUnit}</td>
-            <td>${vo.dishGroup}</td>
-            <td>${vo.dishOrder}</td>
+            <td>${vo.categoryOrder}</td>
             <td>
                 <div class="am-btn-group">
-                    <button id="deleteBtn" type="button" class="am-btn am-btn-sm"><a href="/menu/delete.do?dishId=${vo.dishId}" target="_self">删除</a></button>
+                    <a href="/category/delete.do?categoryId=${vo.categoryId}" onClick="return confirm('确定删除吗？')" target="_self">
+                        <button id="deleteBtn" type="button" class="am-btn am-btn-sm">删除</button>
+                    </a>
                 </div>
                 <div class="am-btn-group">
-                <button type="button" class="am-btn am-btn-sm">编辑</button>
-            </div>
+                    <a href="/category/update.do?categoryId=${vo.categoryId}" target="_self">
+                        <button type="button" class="am-btn am-btn-sm">编辑</button>
+                    </a>
+                </div>
             </td>
         </tr>
     </c:forEach>

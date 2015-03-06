@@ -1,10 +1,12 @@
 package com.mac.manager.dao.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
- * Created by machao on 2015/2/28.
+ * Created by machao on 2015/3/2.
  */
 @Entity
 @Table(name = "menu", schema = "", catalog = "mac")
@@ -26,6 +28,8 @@ public class MenuEntity {
     private CategoryEntity categoryByCategoryId;
 
     @Id
+    @GenericGenerator(name = "generator", strategy = "uuid.hex")
+    @GeneratedValue(generator = "generator")
     @Column(name = "dish_id", nullable = false, insertable = true, updatable = true, length = 36)
     public String getDishId() {
         return dishId;

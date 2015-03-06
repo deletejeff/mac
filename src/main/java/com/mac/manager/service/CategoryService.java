@@ -16,4 +16,6 @@ public interface CategoryService {
     public boolean deleteCategory(String categoryId);
     
     public boolean updateCategory(CategoryVo categoryVo);
+
+    public CategoryVo getById(String categoryId);
 }

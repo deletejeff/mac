@@ -78,66 +78,21 @@
     </div>
 </header>
 <!-- 收缩面板内容 -->
-<div class="am-panel-group" id="accordion">
-    <div class="am-panel am-panel-default">
-        <div class="am-panel-hd">
-            <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">滋奇老友记秘制私房火锅</h4>
+<div class="am-panel-group" id="accordion"></div>
+
+<!-- 弹出层 -->
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-order">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">您的菜单</div>
+        <div id="myOrderContent" class="am-scrollable-vertical">
         </div>
-        <div id="do-not-say-1" class="am-panel-collapse am-collapse am-in">
-            <div class="am-panel-bd">
-                <ul id="dish_list" class="am-list am-list-static am-list-border"></ul>
-            </div>
+        <%--<div class="am-modal-bd">点击确定下单</div>--%>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">我要修改</span>
+            <span class="am-modal-btn">我要下单</span>
         </div>
     </div>
-
-    <div class="am-panel am-panel-default">
-        <div class="am-panel-hd">
-            <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">酒水</h4>
-        </div>
-        <div id="do-not-say-2" class="am-panel-collapse am-collapse">
-            <div class="am-panel-bd">
-                暂未开放
-            </div>
-        </div>
-    </div>
-
-    <div class="am-panel am-panel-default">
-        <div class="am-panel-hd">
-            <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">饮料</h4>
-        </div>
-        <div id="do-not-say-3" class="am-panel-collapse am-collapse">
-            <div class="am-panel-bd">
-                暂未开放
-            </div>
-        </div>
-    </div>
-
-    <div class="am-panel am-panel-default">
-        <div class="am-panel-hd">
-            <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-4'}">小吃</h4>
-        </div>
-        <div id="do-not-say-4" class="am-panel-collapse am-collapse">
-            <div class="am-panel-bd">
-                暂未开放
-            </div>
-        </div>
-    </div>
-
-
-    
-    <!-- 弹出层 -->
-    <div class="am-modal am-modal-alert" tabindex="-1" id="my-order">
-        <div class="am-modal-dialog">
-            <div class="am-modal-hd">您的菜单</div>
-            <div id="my-order-content" class="am-scrollable-vertical">
-            </div>
-            <%--<div class="am-modal-bd">点击确定下单</div>--%>
-            <div class="am-modal-footer">
-                <span class="am-modal-btn">我要修改</span>
-                <span class="am-modal-btn">我要下单</span>
-            </div>
-        </div>
-    </div>
+</div>
 
 
 <!--[if (gte IE 9)|!(IE)]><!-->
@@ -220,7 +175,9 @@
             success : function (data){
                 data = $.parseJSON(data);
                 $('#accordion').empty();
+                var ul_id = '';
                 $.each(data.list, function(i, item){
+                    if(i==0)ul_id += item.categoryId;
                     $('#accordion').append(
                     '<div class="am-panel am-panel-default">' +
                         '<div class="am-panel-hd">' +
@@ -233,11 +190,11 @@
                         '</div>' +
                     '</div>');
                 });
-                initData();
+                initData(ul_id);
             }
         });
         $('#pre-my-order').on('click', function() {
-            $('#my-order-content').empty();
+            $('#myOrderContent').empty();
             var myOrderInnerHTML = '<table style="align-content: center;width: 100%">';
             for(var i=0;i<orderList.length;i++){
                 var obj = orderList[i];
@@ -249,31 +206,31 @@
             }
             myOrderInnerHTML += '</table>';
             myOrderInnerHTML += '<br/>合计:' + totalPrice + '&nbsp;元';
-            $('#my-order-content').append(myOrderInnerHTML);
+            $('#myOrderContent').append(myOrderInnerHTML);
         });
     });
-    function initData(){
+    function initData(ul_id){
         $.ajax({
             url: '/menu/list.do',
             type: 'post',
             data: {
-                categoryId : '1'
+                categoryId : ul_id
             },
             success:function (data) {
                 data = $.parseJSON(data);
-//            console.log(data);
+                console.log(data);
                 $.each(data.pageList.list, function(i, item){
-                    $('#list_1').append('<li>' +
+                    $('#list_' + ul_id + '').append('<li>' +
                     '<label class="am-hide" id="dishPrice_' + item.dishId + '">' + item.dishPrice + '</label>' +
                     '<label class="am-hide" id="dishName_' + item.dishId + '">' + item.dishName + '</label>' +
                     '<span class=" am-badge am-badge-success am-circle">' +
-                    '<span class="am-icon-btn-sm am-icon-plus" onclick="plus(' + item.dishId + ',\'' + item.dishName + '\',\'' + item.dishUnit + '\',' + item.dishPrice + ');"></span>' +
+                    '<span class="am-icon-btn-sm am-icon-plus" onclick="plus(\'' + item.dishId + '\',\'' + item.dishName + '\',\'' + item.dishUnit + '\',' + item.dishPrice + ');"></span>' +
                     '</span>' +
                     '<span id="quantity_span_' + item.dishId + '" class="am-badge am-badge-secondary am-circle am-hide">' +
                     '<span class="am-icon-btn-sm" id="quantity_' + item.dishId + '">0</span>' +
                     '</span>' +
                     '<span id="minus_span_' + item.dishId + '" class="am-badge am-badge-danger am-circle am-hide">' +
-                    '<span class="am-icon-btn-sm am-icon-minus" onclick="minus(' + item.dishId + ',\'' + item.dishName + '\',\'' + item.dishUnit + '\',' + item.dishPrice + ');"></span>' +
+                    '<span class="am-icon-btn-sm am-icon-minus" onclick="minus(\'' + item.dishId + '\',\'' + item.dishName + '\',\'' + item.dishUnit + '\',' + item.dishPrice + ');"></span>' +
                     '</span>' +
                     '<span class="am-badge am-round">' +
                     '<span class="am-text-sm">' + item.dishPrice + '元/' + item.dishUnit + '</span>' +

@@ -34,6 +34,7 @@
 
     <link rel="stylesheet" href="resources/assets/css/amazeui.min.css">
     <link rel="stylesheet" href="resources/assets/css/app.css">
+    <script type="application/javascript" src="static/js/app.js"></script>
     <script type="application/javascript" src="resources/assets/js/jquery.min.js"></script>
     <script type="application/javascript" src="resources/assets/js/amazeui.min.js"></script>
     <style>
@@ -168,7 +169,7 @@
     }
     $(function() {
         $.ajax({
-            url : '/category/list.do',
+            url : BASE_URL + '/category/list.do',
             cache : false,
             async : false,
             type : "POST",
@@ -211,14 +212,13 @@
     });
     function initData(ul_id){
         $.ajax({
-            url: '/menu/list.do',
+            url: BASE_URL + '/menu/list.do',
             type: 'post',
             data: {
                 categoryId : ul_id
             },
             success:function (data) {
                 data = $.parseJSON(data);
-                console.log(data);
                 $.each(data.pageList.list, function(i, item){
                     $('#list_' + ul_id + '').append('<li>' +
                     '<label class="am-hide" id="dishPrice_' + item.dishId + '">' + item.dishPrice + '</label>' +

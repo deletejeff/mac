@@ -34,6 +34,7 @@
 
     <link rel="stylesheet" href="resources/assets/css/amazeui.min.css">
     <link rel="stylesheet" href="resources/assets/css/app.css">
+    <script type="application/javascript" src="static/js/app.js"></script>
 </head>
 <body>
 <h2>Welcome 老友记!</h2>

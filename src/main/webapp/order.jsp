@@ -1,4 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
+<%
+    String path = request.getContextPath();
+%>
 <!doctype html>
 <html class="no-js">
 <head>
@@ -16,27 +19,27 @@
     <!-- No Baidu Siteapp-->
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
-    <link rel="icon" type="image/png" href="resources/assets/i/favicon.png">
+    <link rel="icon" type="image/png" href="<%=path%>/resources/assets/i/favicon.png">
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="resources/assets/i/app-icon72x72@2x.png">
+    <link rel="icon" sizes="192x192" href="<%=path%>/resources/assets/i/app-icon72x72@2x.png">
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
-    <link rel="apple-touch-icon-precomposed" href="resources/assets/i/app-icon72x72@2x.png">
+    <link rel="apple-touch-icon-precomposed" href="<%=path%>/resources/assets/i/app-icon72x72@2x.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileImage" content="<%=path%>/resources/assets/i/app-icon72x72@2x.png">
     <meta name="msapplication-TileColor" content="#0e90d2">
 
-    <link rel="stylesheet" href="resources/assets/css/amazeui.min.css">
-    <link rel="stylesheet" href="resources/assets/css/app.css">
-    <script type="application/javascript" src="static/js/app.js"></script>
-    <script type="application/javascript" src="resources/assets/js/jquery.min.js"></script>
-    <script type="application/javascript" src="resources/assets/js/amazeui.min.js"></script>
+    <link rel="stylesheet" href="<%=path%>/resources/assets/css/amazeui.min.css">
+    <link rel="stylesheet" href="<%=path%>/resources/assets/css/app.css">
+    <script type="application/javascript" src="<%=path%>/static/js/app.js"></script>
+    <script type="application/javascript" src="<%=path%>/resources/assets/js/jquery.min.js"></script>
+    <script type="application/javascript" src="<%=path%>/resources/assets/js/amazeui.min.js"></script>
     <style>
         body{color: #2f2f2f;background: #f5f5f5;/*font-size: 1em;*/}
 
@@ -133,10 +136,10 @@
     <!--在这里编写你的代码-->
 
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="resources/assets/js/jquery.min.js"></script>
+<script src="<%=path%>/resources/assets/js/jquery.min.js"></script>
 <!--<![endif]-->
 <!--[if lte IE 8 ]>
-<script src="resources/jquery/jquery-1.9.1.min.js"></script>
+<script src="<%=path%>/resources/jquery/jquery-1.9.1.min.js"></script>
 <![endif]-->
 <script type="application/javascript">
     var selectTime = [{name:"10点",value:10},{name:"10点30分",value:10.5},{name:"11点",value:11},{name:"11点30分",value:11.5},{name:"12点",value:11},{name:"12点30分",value:12.5},{name:"13点",value:13},{name:"13点30分",value:13.5},{name:"14点",value:14},{name:"14点30分",value:14.5},{name:"15点",value:15},{name:"15点30分",value:15.5},{name:"16点",value:16},{name:"16点30分",value:16.5},{name:"17点",value:17},{name:"17点30分",value:17.5},{name:"18点",value:18},{name:"18点30分",value:18.5},{name:"19点",value:19},{name:"19点30分",value:19.5},{name:"20点",value:20},{name:"20点30分",value:20.5},{name:"21点",value:21},{name:"21点30分",value:21.5},{name:"22点",value:22},{name:"22点30分",value:22.5},{name:"23点",value:23}];

@@ -1,4 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
+<%
+    String path = request.getContextPath();
+%>
 <!doctype html>
 <html class="no-js">
 <head>
@@ -16,27 +19,27 @@
     <!-- No Baidu Siteapp-->
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
-    <link rel="icon" type="image/png" href="resources/assets/i/favicon.png">
+    <link rel="icon" type="image/png" href="<%=path%>/resources/assets/i/favicon.png">
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="resources/assets/i/app-icon72x72@2x.png">
+    <link rel="icon" sizes="192x192" href="<%=path%>/resources/assets/i/app-icon72x72@2x.png">
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
-    <link rel="apple-touch-icon-precomposed" href="resources/assets/i/app-icon72x72@2x.png">
+    <link rel="apple-touch-icon-precomposed" href="<%=path%>/resources/assets/i/app-icon72x72@2x.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileImage" content="<%=path%>/resources/assets/i/app-icon72x72@2x.png">
     <meta name="msapplication-TileColor" content="#0e90d2">
 
-    <link rel="stylesheet" href="resources/assets/css/amazeui.min.css">
-    <link rel="stylesheet" href="resources/assets/css/app.css">
-    <script type="application/javascript" src="static/js/app.js"></script>
-    <script type="application/javascript" src="resources/assets/js/jquery.min.js"></script>
-    <script type="application/javascript" src="resources/assets/js/amazeui.min.js"></script>
+    <link rel="stylesheet" href="<%=path%>/resources/assets/css/amazeui.min.css">
+    <link rel="stylesheet" href="<%=path%>/resources/assets/css/app.css">
+    <script type="application/javascript" src="<%=path%>/static/js/app.js"></script>
+    <script type="application/javascript" src="<%=path%>/resources/assets/js/jquery.min.js"></script>
+    <script type="application/javascript" src="<%=path%>/resources/assets/js/amazeui.min.js"></script>
     <style>
         .am-header-fixed {
             position: fixed;
@@ -97,10 +100,10 @@
 
 
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="resources/assets/js/jquery.min.js"></script>
+<script src="<%=path%>/resources/assets/js/jquery.min.js"></script>
 <!--<![endif]-->
 <!--[if lte IE 8 ]>
-<script src="resources/jquery/jquery-1.9.1.min.js"></script>
+<script src="<%=path%>/resources/jquery/jquery-1.9.1.min.js"></script>
 <![endif]-->
 <script type="application/javascript">
     var totalPrice = parseInt($('#totalPrice').text());
@@ -171,7 +174,7 @@
         $.ajax({
             url : BASE_URL + '/category/list.do',
             cache : false,
-            async : false,
+            async : true,
             type : "POST",
             success : function (data){
                 data = $.parseJSON(data);

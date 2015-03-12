@@ -43,6 +43,9 @@
 </head>
 <body>
 <div class="am-cf">
+    <a href="<%=path%>/index.jsp" target="_self">
+        <button type="button" class="am-btn am-btn-sm">主页</button>
+    </a>
     <a href="<%=path%>/category/add.do" target="_self">
         <button type="button" class="am-btn am-btn-sm">添加类别</button>
     </a>

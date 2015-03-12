@@ -43,6 +43,9 @@
     <script type="application/javascript" src="<%=path%>/resources/assets/js/amazeui.min.js"></script>
 </head>
 <body>
+<a href="javascript:history.go(-1)" target="_self">
+    <button type="button" class="am-btn am-btn-sm">返回</button>
+</a>
 <form class="am-form" action="<%=path%>/menu/add.do" method="post" enctype="multipart/form-data" data-am-validator>
     <fieldset>
         <legend>添加菜品</legend>

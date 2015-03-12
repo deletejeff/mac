@@ -40,10 +40,10 @@
             <list>
                 <bean class='org.springframework.http.converter.ByteArrayHttpMessageConverter'/>
                 <bean class='org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter'/>
-                <bean class='org.springframework.http.converter.StringHttpMessageConverter'></bean>
-                <bean class='org.springframework.http.converter.ResourceHttpMessageConverter'></bean>
-                <bean class='org.springframework.http.converter.xml.SourceHttpMessageConverter'></bean>
-                <bean class='org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter'></bean>
+                <bean class='org.springframework.http.converter.StringHttpMessageConverter'/>
+                <bean class='org.springframework.http.converter.ResourceHttpMessageConverter'/>
+                <bean class='org.springframework.http.converter.xml.SourceHttpMessageConverter'/>
+                <bean class='org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter'/>
                 <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
                     <property name="supportedMediaTypes">
                         <list>
@@ -63,17 +63,17 @@
           class='org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter'>
         <property name='webBindingInitializer'>
             <bean class='org.springframework.web.bind.support.ConfigurableWebBindingInitializer'>
-                <property name='conversionService' ref='conversionService'></property>
+                <property name='conversionService' ref='conversionService'/>
             </bean>
         </property>
         <property name='messageConverters'>
             <list>
                 <bean class='org.springframework.http.converter.ByteArrayHttpMessageConverter'/>
                 <bean class='org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter'/>
-                <bean class='org.springframework.http.converter.StringHttpMessageConverter'></bean>
-                <bean class='org.springframework.http.converter.ResourceHttpMessageConverter'></bean>
-                <bean class='org.springframework.http.converter.xml.SourceHttpMessageConverter'></bean>
-                <bean class='org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter'></bean>
+                <bean class='org.springframework.http.converter.StringHttpMessageConverter'/>
+                <bean class='org.springframework.http.converter.ResourceHttpMessageConverter'/>
+                <bean class='org.springframework.http.converter.xml.SourceHttpMessageConverter'/>
+                <bean class='org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter'/>
                 <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 
                     <property name="supportedMediaTypes">
@@ -143,10 +143,10 @@
     <bean id="weChat" class="com.sdyc.wx.api.WeChat">
         <constructor-arg name="app" ref="weChatApp"/>
         <property name="eventHandler">
-            <bean class="com.mac.app.wechat.WechatEventHandler"></bean>
+            <bean class="com.mac.app.wechat.WechatEventHandler"/>
         </property>
         <property name="messageHandler">
-            <bean class="com.mac.app.wechat.WechatMessageHandler"></bean>
+            <bean class="com.mac.app.wechat.WechatMessageHandler"/>
         </property>
     </bean>
     <!--

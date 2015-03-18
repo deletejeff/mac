@@ -76,6 +76,24 @@
       <index name="fk_reference_1" unique="false" columns="category_id"/>
       <index name="senq" unique="false" columns="dish_id"/>
     </table>
+    <table name="user" schema="" catalog="mac" type="TABLE">
+      <column name="uid" sqlType="VARCHAR" precision="16" scale="0" nullable="false" jdbcType="12" def="Jyc=" remarks="55So5oi3SUQ="/>
+      <column name="user_name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="55So5oi35ZCN"/>
+      <column name="user_password" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="55So5oi35a+G56CB"/>
+      <column name="user_email" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="6YKu566x"/>
+      <column name="nickname" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5pi156ew"/>
+      <column name="open_id" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12" remarks="5b6u5L+hb3BlbklE"/>
+      <column name="real_name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="55yf5a6e5aeT5ZCN"/>
+      <column name="phone" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="55S16K+d"/>
+      <column name="gender" sqlType="CHAR" precision="20" scale="0" nullable="true" jdbcType="1" remarks="5oCn5Yir"/>
+      <column name="status" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6LSm5Y+354q25oCB"/>
+      <column name="last_login_ip" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12" remarks="5LiK5qyh55m75b2VSVA="/>
+      <column name="superman" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6LaF57qn55So5oi3"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" remarks="6LSm5Y+35Yib5bu65pe26Ze0"/>
+      <column name="created_by_user_id" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="6LSm5Y+35Yib5bu655So5oi3"/>
+      <column name="head_img_url" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12" remarks="55So5oi35aS05YOP"/>
+      <primary-key name="PRIMARY" columns="uid"/>
+    </table>
     <table name="wx_base_info" schema="" catalog="mac" type="TABLE">
       <column name="mp_id" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12" remarks="5YWs5LyX5Y+35Y6f5aeLSUQ="/>
       <column name="mp_name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="5YWs5LyX5Y+35ZCN56ew"/>

@@ -104,7 +104,7 @@ public class WechatMessageHandler extends DefaultMessageHandlerImpl {
             article.setTitle("测试");
             article.setDescription("");
             article.setPicUrl("http://113.200.64.31/mac/images/ziqi.jpg");
-            article.setUrl("http://115.28.45.153/");
+            article.setUrl("http://115.28.45.153/mac/main.jsp");
             articleList.add(article);
             return this.wxRespService.respMessageHandlerWithNews(message, articleList);
         }

@@ -43,7 +43,7 @@
 </head>
 <body>
 <div class="am-cf">
-    <a href="<%=path%>/index.jsp" target="_self">
+    <a href="<%=path%>/main.jsp" target="_self">
         <button type="button" class="am-btn am-btn-sm">主页</button>
     </a>
     <a href="<%=path%>/category/add.do" target="_self">
@@ -54,7 +54,6 @@
 <table class="am-table am-table-bordered am-table-striped am-table-hover">
     <thead>
     <tr>
-        <th>ID</th>
         <th>名称</th>
         <th>排序</th>
         <th>操作</th>
@@ -62,7 +61,6 @@
     </thead>
     <c:forEach items="${list}" var="vo" varStatus="status">
         <tr>
-            <td>${vo.categoryId}</td>
             <td>${vo.categoryName}</td>
             <td>${vo.categoryOrder}</td>
             <td>

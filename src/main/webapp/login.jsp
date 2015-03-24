@@ -38,10 +38,55 @@
     <link rel="stylesheet" href="<%=path%>/resources/assets/css/amazeui.min.css">
     <link rel="stylesheet" href="<%=path%>/resources/assets/css/app.css">
     <script type="application/javascript" src="<%=path%>/static/js/app.js"></script>
+    <style>
+        .header {
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 200%;
+            color: #333;
+            margin-top: 30px;
+        }
+        .header p {
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-<h2>Welcome 老友记!</h2>
+<div class="header">
+    <div class="am-g">
+        <h1>Welcome 老友记!</h1>
+        <p>trkrkgtb grdkgldmbaew erditgvjgjygm<br/>专业的...，牛逼的...，在这里，找到你自己</p>
+    </div>
+    <hr />
+</div>
+<div class="am-g">
+    <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+        <h3>登录</h3>
+        <hr>
+        <br>
 
+        <form method="post" class="am-form">
+            <label for="userName">用户名:</label>
+            <input type="text" name="userName" id="userName" value="">
+            <br>
+            <label for="userPassword">密码:</label>
+            <input type="password" name="userPassword" id="userPassword" value="">
+            <br>
+            <label for="remember-me">
+                <input id="remember-me" type="checkbox">
+                记住密码
+            </label>
+            <br />
+            <div class="am-cf">
+                <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
+                <input type="submit" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
+            </div>
+        </form>
+        <hr>
+        <p>© 2015 AllMobilize, Inc.Powered By machao Version 1.0-beta</p>
+    </div>
+</div>
 <script>
 </script>
 </body>

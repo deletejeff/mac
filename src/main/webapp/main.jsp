@@ -41,7 +41,13 @@
 </head>
 <body>
 <h2>Welcome 老友记!</h2>
-
+<a href="menu.jsp" class="am-btn am-btn-secondary am-round"><i class="am-icon-cutlery"></i> 餐单</a>
+<a href="order.jsp" class="am-btn am-btn-secondary am-round"><i class="am-icon-cc-visa"></i> 订单</a>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
+<a href="<%=path%>/menu/list_manager.do" id="menu_manager" class="am-btn am-btn-secondary am-round"><i class="am-icon-cog"></i> 菜单管理</a>
+<a href="<%=path%>/category/list_manager.do" id="category_manager" class="am-btn am-btn-secondary am-round"><i class="am-icon-cog"></i> 类别管理</a>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
+<a href="<%=path%>/user/list_manager.do" id="user_manager" class="am-btn am-btn-secondary am-round"><i class="am-icon-cog"></i> 用户管理</a>
 <script>
 </script>
 </body>

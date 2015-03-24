@@ -46,58 +46,54 @@
     <a href="<%=path%>/main.jsp" target="_self">
         <button type="button" class="am-btn am-btn-sm">主页</button>
     </a>
-    <a href="<%=path%>/menu/add.do" target="_self">
-        <button type="button" class="am-btn am-btn-sm">添加菜品</button>
+    <a href="<%=path%>/user/add.do" target="_self">
+        <button type="button" class="am-btn am-btn-sm">添加用户</button>
     </a>
     <label class="am-fr">${msg}</label>
 </div>
 <table class="am-table am-table-bordered am-table-striped am-table-hover">
     <thead>
-        <tr>
-            <th>名称</th>
-            <th>英文名</th>
-            <th>所属类型</th>
-            <th>价格</th>
-            <th width="240">描述</th>
-            <th>麻辣等级</th>
-            <th>火爆程度</th>
-            <th width="110">图片</th>
-            <th>大份价格</th>
-            <th>产地</th>
-            <th>容量</th>
-            <th>单位</th>
-            <th>分组</th>
-            <th>排序</th>
-            <th width="140">操作</th>
-        </tr>
+    <tr>
+        <th>用户名</th>
+        <th>邮箱</th>
+        <th>昵称</th>
+        <th>是否微信绑定</th>
+        <th>真实姓名</th>
+        <th>电话</th>
+        <th>性别</th>
+        <th>账号状态</th>
+        <th>上次登录IP</th>
+        <th>账号创建时间</th>
+        <th>账号创建用户</th>
+        <th>用户头像</th>
+        <th>操作</th>
+    </tr>
     </thead>
-    <c:forEach items="${pageList.list}" var="vo" varStatus="status">
+    <c:forEach items="${list}" var="vo" varStatus="status">
         <tr>
-            <td>${vo.dishName}</td>
-            <td>${vo.dishEnglishName}</td>
-            <td>${vo.categoryName}</td>
-            <td>${vo.dishPrice}</td>
-            <td>${vo.dishDescription}</td>
-            <td>${vo.spicyLevel}</td>
-            <td>${vo.hotLevel}</td>
-            <td><img src="<%=path%>/${vo.dishImgurl}"></td>
-            <td>${vo.dishPrice2}</td>
-            <td>${vo.dishOrigin}</td>
-            <td>${vo.dishCapacity}</td>
-            <td>${vo.dishUnit}</td>
-            <td>${vo.dishGroup}</td>
-            <td>${vo.dishOrder}</td>
+            <td>${vo.userName}</td>
+            <td>${vo.userEmail}</td>
+            <td>${vo.nickname}</td>
+            <td>${vo.openId}</td>
+            <td>${vo.realName}</td>
+            <td>${vo.phone}</td>
+            <td>${vo.gender}</td>
+            <td>${vo.status}</td>
+            <td>${vo.lastLoginIp}</td>
+            <td>${vo.createdAt}</td>
+            <td>${vo.createdByUserId}</td>
+            <td>${vo.headImgUrl}</td>
             <td>
                 <div class="am-btn-group">
-                    <a href="<%=path%>/menu/delete.do?dishId=${vo.dishId}" onClick="return confirm('确定删除吗？')" target="_self">
+                    <a href="<%=path%>/user/delete.do?uid=${vo.uid}" onClick="return confirm('确定删除吗？')" target="_self">
                         <button id="deleteBtn" type="button" class="am-btn am-btn-sm">删除</button>
                     </a>
                 </div>
                 <div class="am-btn-group">
-                    <a href="<%=path%>/menu/update.do?dishId=${vo.dishId}" target="_self">
+                    <a href="<%=path%>/user/update.do?uid=${vo.uid}" target="_self">
                         <button type="button" class="am-btn am-btn-sm">编辑</button>
                     </a>
-            </div>
+                </div>
             </td>
         </tr>
     </c:forEach>

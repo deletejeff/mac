@@ -1,6 +1,8 @@
 package com.mac.manager.vo;
 
-import java.sql.Timestamp;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 /**
  * Created by machao on 2015/3/12.
@@ -18,11 +20,16 @@ public class UserVo {
     private Integer status;
     private String lastLoginIp;
     private Integer superman;
-    private Timestamp createdAt;
+    private Date createdAt;
     private String createdByUserId;
     private String headImgUrl;
 
-    public UserVo(String uid, String userName, String userPassword, String userEmail, String nickname, String openId, String realName, String phone, String gender, Integer status, String lastLoginIp, Integer superman, Timestamp createdAt, String createdByUserId, String headImgUrl) {
+    public UserVo() {
+    }
+
+
+
+    public UserVo(String uid, String userName, String userPassword, String userEmail, String nickname, String openId, String realName, String phone, String gender, Integer status, String lastLoginIp, Integer superman, Date createdAt, String createdByUserId, String headImgUrl) {
         this.uid = uid;
         this.userName = userName;
         this.userPassword = userPassword;
@@ -136,11 +143,12 @@ public class UserVo {
         this.superman = superman;
     }
 
-    public Timestamp getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 

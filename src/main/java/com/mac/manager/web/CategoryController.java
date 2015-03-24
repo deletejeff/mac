@@ -72,7 +72,6 @@ public class CategoryController {
 
     @RequestMapping(value = "/add.do", method = RequestMethod.POST)
     public String addCategory(CategoryVo categoryVo) {
-        Map<String, Object> map = new HashMap<String, Object>();
         String msg = null;
         try {
             this.categoryService.addCategory(categoryVo);

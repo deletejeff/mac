@@ -38,10 +38,44 @@
     <link rel="stylesheet" href="<%=path%>/resources/assets/css/amazeui.min.css">
     <link rel="stylesheet" href="<%=path%>/resources/assets/css/app.css">
     <script type="application/javascript" src="<%=path%>/static/js/app.js"></script>
+    <script type="application/javascript" src="<%=path%>/resources/assets/js/jquery.min.js"></script>
+    <script type="application/javascript" src="<%=path%>/resources/assets/js/amazeui.min.js"></script>
 </head>
 <body>
-<h2>Welcome 老友记!</h2>
+<header class="am-topbar admin-header">
+    <div class="am-topbar-brand">
+        <strong>Amaze UI</strong> <small>ziqilaoyouji</small>
+    </div>
+</header>
+<div class="am-cf admin-main">
+    <div class="am-g">
+        <h1>Welcome !</h1>
+        <p>trkrkgtb grdkgldmbaew erditgvjgjygm<br/>Professional，Powerful，Here, find yourself</p>
+    </div>
+</div>
+<div data-am-widget="slider" class="am-slider am-slider-a1 am-slider-c1" data-am-slider='{directionNav:false}'>
+    <ul class="am-slides">
+        <li>
+            <img src="<%=path%>/static/images/pure-1.jpg" />
+            <div class="am-slider-desc">远方 有一个地方 那里种有我们的梦想</div>
+        </li>
+        <li>
+            <img src="<%=path%>/static/images/pure-2.jpg" />
+            <div class="am-slider-desc">远方 有一个地方 那里种有我们的梦想</div>
+        </li>
+        <li>
+            <img src="<%=path%>/static/images/pure-3.jpg" />
+            <div class="am-slider-desc">远方 有一个地方 那里种有我们的梦想</div>
+        </li>
+        <li>
+            <img src="<%=path%>/static/images/pure-4.jpg" />
+            <div class="am-slider-desc">远方 有一个地方 那里种有我们的梦想</div>
+        </li>
+    </ul>
+</div>
+<footer>
 
+</footer>
 <script>
 </script>
 </body>

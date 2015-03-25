@@ -97,7 +97,12 @@
         </div>
     </div>
 </div>
-
+<!-- 回顶部 -->
+<div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
+    <a href="#top" title="">
+        <img class="am-gotop-icon-custom" src="<%=path%>/static/images/goTop.gif"/>
+    </a>
+</div>
 
 <!--[if (gte IE 9)|!(IE)]><!-->
 <script src="<%=path%>/resources/assets/js/jquery.min.js"></script>

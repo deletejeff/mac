@@ -48,6 +48,9 @@
 <a href="<%=path%>/category/list_manager.do" id="category_manager" class="am-btn am-btn-secondary am-round"><i class="am-icon-cog"></i> 类别管理</a>
 <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
 <a href="<%=path%>/user/list_manager.do" id="user_manager" class="am-btn am-btn-secondary am-round"><i class="am-icon-cog"></i> 用户管理</a>
+<a href="<%=path%>/user/list_manager.do" id="order_manager" class="am-btn am-btn-secondary am-round"><i class="am-icon-cog"></i> 订单管理</a>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
+<a href="<%=path%>/time_range/list_manager.do" id="time_range_manager" class="am-btn am-btn-secondary am-round"><i class="am-icon-cog"></i> 包场时段管理</a>
 <script>
 </script>
 </body>

@@ -76,15 +76,37 @@
       <index name="fk_reference_1" unique="false" columns="category_id"/>
       <index name="senq" unique="false" columns="dish_id"/>
     </table>
+    <table name="order" schema="" catalog="mac" type="TABLE">
+      <column name="order_id" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="people_number" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6IGa5Lya5Lq65pWw"/>
+      <column name="order_by_username" sqlType="VARCHAR" precision="16" scale="0" nullable="true" jdbcType="12" remarks="6IGU57O75Lq6"/>
+      <column name="order_by_phone" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12" remarks="6IGU57O755S16K+d"/>
+      <column name="order_message" sqlType="VARCHAR" precision="2000" scale="0" nullable="true" jdbcType="12" remarks="5a6i5oi355WZ6KiA"/>
+      <primary-key name="PRIMARY" columns="order_id"/>
+    </table>
+    <table name="order_time_range" schema="" catalog="mac" type="TABLE">
+      <column name="order_id" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="time_range_id" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="order_id"/>
+      <foreign-key name="order_time_range_fk" columns="time_range_id" ref-table="time_range" ref-schema="" ref-catalog="mac" ref-columns="time_range_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="order_time_range_fk" unique="false" columns="time_range_id"/>
+    </table>
+    <table name="time_range" schema="" catalog="mac" type="TABLE">
+      <column name="time_range_id" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="start_time" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92" remarks="5byA5aeL5pe26Ze0"/>
+      <column name="end_time" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92" remarks="57uT5p2f5pe26Ze0"/>
+      <primary-key name="PRIMARY" columns="time_range_id"/>
+      <exported-key name="order_time_range_fk" table="order_time_range" schema="" catalog="mac" columns="time_range_id"/>
+    </table>
     <table name="user" schema="" catalog="mac" type="TABLE">
-      <column name="uid" sqlType="VARCHAR" precision="16" scale="0" nullable="false" jdbcType="12" def="Jyc=" remarks="55So5oi3SUQ="/>
-      <column name="user_name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="55So5oi35ZCN"/>
+      <column name="uid" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12" def="Jyc=" remarks="55So5oi3SUQ="/>
+      <column name="user_name" sqlType="VARCHAR" precision="16" scale="0" nullable="true" jdbcType="12" remarks="55So5oi35ZCN"/>
       <column name="user_password" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="55So5oi35a+G56CB"/>
       <column name="user_email" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="6YKu566x"/>
-      <column name="nickname" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5pi156ew"/>
+      <column name="nickname" sqlType="VARCHAR" precision="16" scale="0" nullable="true" jdbcType="12" remarks="5pi156ew"/>
       <column name="open_id" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12" remarks="5b6u5L+hb3BlbklE"/>
       <column name="real_name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="55yf5a6e5aeT5ZCN"/>
-      <column name="phone" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12" remarks="55S16K+d"/>
+      <column name="phone" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12" remarks="55S16K+d"/>
       <column name="gender" sqlType="CHAR" precision="20" scale="0" nullable="true" jdbcType="1" remarks="5oCn5Yir"/>
       <column name="status" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="6LSm5Y+354q25oCB"/>
       <column name="last_login_ip" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12" remarks="5LiK5qyh55m75b2VSVA="/>

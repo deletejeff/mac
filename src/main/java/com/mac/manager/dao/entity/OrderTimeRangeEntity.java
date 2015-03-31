@@ -5,7 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 /**
- * Created by machao on 2015/3/30.
+ * Created by machao on 2015/3/31.
  */
 @Entity
 @Table(name = "order_time_range", schema = "", catalog = "mac")

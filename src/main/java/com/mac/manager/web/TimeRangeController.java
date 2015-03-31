@@ -47,7 +47,7 @@ public class TimeRangeController {
         } catch (Exception e) {
             msg = "add:failure";
         }
-        return "redirect:manager/list_manager.do?msg="+msg;
+        return "redirect:list_manager.do?msg="+msg;
     }
 
     @RequestMapping("/delete.do")
@@ -63,7 +63,8 @@ public class TimeRangeController {
     }
 
     @RequestMapping(value = "/update.do",method = RequestMethod.GET)
-    public String updateTimeRange(){
+    public String updateTimeRange(ModelMap map, String timeRangeId){
+        map.put("timeRangeVo", this.timeRangeService.getById(timeRangeId));
         return "manager/time_range_update";
     }
 

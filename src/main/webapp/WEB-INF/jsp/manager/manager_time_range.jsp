@@ -56,9 +56,10 @@
         <tr>
             <th>开始时间</th>
             <th>结束时间</th>
+            <th>操作</th>
         </tr>
     </thead>
-    <c:forEach items="${pageList.list}" var="vo" varStatus="status">
+    <c:forEach items="${list}" var="vo" varStatus="status">
         <tr>
             <td>${vo.startTime}</td>
             <td>${vo.endTime}</td>

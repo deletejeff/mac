@@ -93,8 +93,8 @@
     </table>
     <table name="time_range" schema="" catalog="mac" type="TABLE">
       <column name="time_range_id" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
-      <column name="start_time" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92" remarks="5byA5aeL5pe26Ze0"/>
-      <column name="end_time" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92" remarks="57uT5p2f5pe26Ze0"/>
+      <column name="start_time" sqlType="VARCHAR" precision="8" scale="0" nullable="true" jdbcType="12" remarks="5byA5aeL5pe26Ze0"/>
+      <column name="end_time" sqlType="VARCHAR" precision="8" scale="0" nullable="true" jdbcType="12" remarks="57uT5p2f5pe26Ze0"/>
       <primary-key name="PRIMARY" columns="time_range_id"/>
       <exported-key name="order_time_range_fk" table="order_time_range" schema="" catalog="mac" columns="time_range_id"/>
     </table>

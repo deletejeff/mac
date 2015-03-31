@@ -3,17 +3,16 @@ package com.mac.manager.dao.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.sql.Time;
 
 /**
- * Created by machao on 2015/3/30.
+ * Created by machao on 2015/3/31.
  */
 @Entity
 @Table(name = "time_range", schema = "", catalog = "mac")
 public class TimeRangeEntity {
     private String timeRangeId;
-    private Time startTime;
-    private Time endTime;
+    private String startTime;
+    private String endTime;
 
     @Id
     @GenericGenerator(name = "generator", strategy = "uuid.hex")
@@ -28,22 +27,22 @@ public class TimeRangeEntity {
     }
 
     @Basic
-    @Column(name = "start_time", nullable = true, insertable = true, updatable = true)
-    public Time getStartTime() {
+    @Column(name = "start_time", nullable = true, insertable = true, updatable = true, length = 8)
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
     @Basic
-    @Column(name = "end_time", nullable = true, insertable = true, updatable = true)
-    public Time getEndTime() {
+    @Column(name = "end_time", nullable = true, insertable = true, updatable = true, length = 8)
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

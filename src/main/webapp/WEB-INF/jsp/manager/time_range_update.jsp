@@ -47,22 +47,22 @@
 <a href="javascript:history.go(-1)" target="_self">
     <button type="button" class="am-btn am-btn-sm">返回</button>
 </a>
-<form class="am-form" action="<%=path%>/time_range/add.do" method="post" data-am-validator>
+<form class="am-form" action="<%=path%>/time_range/update.do" method="post" data-am-validator>
     <fieldset>
-        <legend>添加包场时段</legend>
+        <legend>编辑包场时段</legend>
     </fieldset>
     <div class="am-hide">
-        <input type="text" id="timeRangeId" name="timeRangeId">
+        <input type="text" id="timeRangeId" name="timeRangeId" value="${timeRangeVo.timeRangeId}" readonly>
     </div>
     <div class="am-form-group">
         <button type="button" class="am-btn am-btn-default am-margin-right" id="start_time_btn">开始时间</button>
-        <span id="my-startDate"></span>
-        <input type="hidden" id="startTime" name="startTime">
+        <span id="my-startDate">${timeRangeVo.startTime}</span>
+        <input type="hidden" id="startTime" name="startTime" value="${timeRangeVo.startTime}">
     </div>
     <div class="am-form-group">
         <button type="button" class="am-btn am-btn-default am-margin-right" id="end_time_btn">结束时间</button>
-        <span id="my-endDate"></span>
-        <input type="hidden" id="endTime" name="endTime">
+        <span id="my-endDate">${timeRangeVo.endTime}</span>
+        <input type="hidden" id="endTime" name="endTime" value="${timeRangeVo.endTime}">
     </div>
     <p><button type="submit" id="add_time_range" class="am-btn am-btn-lg am-center">确认</button></p>
 </form>

@@ -57,26 +57,45 @@
     <ul class="am-slides">
         <li>
             <img src="<%=path%>/static/images/pure-1.jpg" />
-            <div class="am-slider-desc">远方 有一个地方 那里种有我们的梦想</div>
+            <div class="am-slider-desc">Professional，Powerful，Here, find yourself</div>
         </li>
         <li>
             <img src="<%=path%>/static/images/pure-2.jpg" />
-            <div class="am-slider-desc">远方 有一个地方 那里种有我们的梦想</div>
+            <div class="am-slider-desc">Professional，Powerful，Here, find yourself</div>
         </li>
         <li>
             <img src="<%=path%>/static/images/pure-3.jpg" />
-            <div class="am-slider-desc">远方 有一个地方 那里种有我们的梦想</div>
+            <div class="am-slider-desc">Professional，Powerful，Here, find yourself</div>
         </li>
         <li>
             <img src="<%=path%>/static/images/pure-4.jpg" />
-            <div class="am-slider-desc">远方 有一个地方 那里种有我们的梦想</div>
+            <div class="am-slider-desc">Professional，Powerful，Here, find yourself</div>
+        </li>
+        <li>
+            <img src="<%=path%>/static/images/pure-1.jpg" />
+            <div class="am-slider-desc">Professional，Powerful，Here, find yourself</div>
+        </li>
+        <li>
+            <img src="<%=path%>/static/images/pure-2.jpg" />
+            <div class="am-slider-desc">Professional，Powerful，Here, find yourself</div>
+        </li>
+        <li>
+            <img src="<%=path%>/static/images/pure-3.jpg" />
+            <div class="am-slider-desc">Professional，Powerful，Here, find yourself</div>
+        </li>
+        <li>
+            <img src="<%=path%>/static/images/pure-4.jpg" />
+            <div class="am-slider-desc">Professional，Powerful，Here, find yourself</div>
         </li>
     </ul>
 </div>
 <footer>
-
+    <img id="qr_code" src=""/>
 </footer>
 <script>
+    $(function(){
+        $('#qr_code').attr("src","qrcode/indexQr.do?content="+encodeURIComponent("hello world"));
+    });
 </script>
 </body>
 </html>

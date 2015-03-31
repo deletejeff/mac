@@ -65,4 +65,12 @@ public class TimeRangeServiceImpl implements TimeRangeService {
         }
         return true;
     }
+
+    @Override
+    public TimeRangeVo getById(String timeRangeId) {
+        TimeRangeVo timeRangeVo = new TimeRangeVo();
+        TimeRangeEntity timeRangeEntity = this.timeRangeDao.getById(timeRangeId);
+        BeanUtils.copyProperties(timeRangeEntity, timeRangeVo);
+        return timeRangeVo;
+    }
 }

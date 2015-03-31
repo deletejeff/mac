@@ -15,4 +15,6 @@ public interface TimeRangeService {
     public boolean deleteTimeRange(String timeRangeId);
 
     public boolean updateTimeRange(TimeRangeVo timeRangeVo);
+
+    public TimeRangeVo getById(String timeRangeId);
 }

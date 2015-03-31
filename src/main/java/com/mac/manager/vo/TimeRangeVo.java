@@ -1,19 +1,17 @@
 package com.mac.manager.vo;
 
-import java.util.Date;
-
 /**
  * Created by machao on 2015/3/30.
  */
 public class TimeRangeVo {
     private String timeRangeId;
-    private Date startTime;
-    private Date endTime;
+    private String startTime;
+    private String endTime;
 
     public TimeRangeVo() {
     }
 
-    public TimeRangeVo(String timeRangeId, Date startTime, Date endTime) {
+    public TimeRangeVo(String timeRangeId, String startTime, String endTime) {
         this.timeRangeId = timeRangeId;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -27,19 +25,19 @@ public class TimeRangeVo {
         this.timeRangeId = timeRangeId;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 }

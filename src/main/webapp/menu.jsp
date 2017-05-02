@@ -92,7 +92,7 @@
         </div>
         <%--<div class="am-modal-bd">点击确定下单</div>--%>
         <div class="am-modal-footer">
-            <span class="am-modal-btn">我要修改</span>
+            <span class="am-modal-btn">继续修改</span>
             <span class="am-modal-btn">我要下单</span>
         </div>
     </div>
@@ -176,6 +176,7 @@
         }
     }
     $(function() {
+        debugger;
         $.ajax({
             url : BASE_URL + '/category/list.do',
             cache : false,
@@ -184,9 +185,10 @@
             success : function (data){
                 data = $.parseJSON(data);
                 $('#accordion').empty();
+                debugger;
                 var ul_id = '';
                 $.each(data.list, function(i, item){
-                    if(i==0)ul_id += item.categoryId;
+                    ul_id = item.categoryId;
                     $('#accordion').append(
                     '<div class="am-panel am-panel-default">' +
                         '<div class="am-panel-hd">' +
@@ -198,8 +200,10 @@
                             '</div>' +
                         '</div>' +
                     '</div>');
+                    debugger;
+                    initData(ul_id);
                 });
-                initData(ul_id);
+
             }
         });
         $('#pre-my-order').on('click', function() {
@@ -245,7 +249,7 @@
                     '</span>' +
                     '<label class="am-kai">' + item.dishName + '</label>' +
                     '</br>' +
-                    '<img class="am-img-loaded" src="' + item.dishImgurl + '">' +
+                    '<img width="120" height="120" class="am-img-loaded" src="' + item.dishImgurl + '">' +
                     '</br>' + item.dishDescription + '</li>');
                 });
                 $('#minus_div').hide();

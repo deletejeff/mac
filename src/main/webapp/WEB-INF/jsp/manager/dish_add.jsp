@@ -57,10 +57,10 @@
         <label for="dishName">名称</label>
         <input type="text" id="dishName" name="dishName" placeholder="填写名称" required>
     </div>
-    <div class="am-form-group">
-        <label for="dishEnglishName">英文名</label>
-        <input type="text" id="dishEnglishName" name="dishEnglishName" placeholder="填写英文名称">
-    </div>
+    <%--<div class="am-form-group">--%>
+        <%--<label for="dishEnglishName">英文名</label>--%>
+        <%--<input type="text" id="dishEnglishName" name="dishEnglishName" placeholder="填写英文名称">--%>
+    <%--</div>--%>
     <div class="am-form-group">
         <label for="categoryId">分类</label>
         <select id="categoryId" name="categoryId">
@@ -76,23 +76,11 @@
         <input type="text" id="dishDescription" name="dishDescription" placeholder="填写菜品介绍">
     </div>
     <div class="am-form-group">
-        <label for="spicyLevel">麻辣等级</label>
-        <select id="spicyLevel" name="spicyLevel">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-    </div>
-    <div class="am-form-group">
-        <label for="hotLevel">火爆程度</label>
-        <select id="hotLevel" name="hotLevel">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+        <label for="dishUnit">计量单位</label>
+        <select id="dishUnit" name="dishUnit">
+            <option value="1">份</option>
+            <option value="2">瓶</option>
+            <option value="3">打</option>
         </select>
     </div>
     <div class="am-form-group">
@@ -101,26 +89,42 @@
         <p class="am-form-help">请选择要上传的文件...</p>
         <div id="img_div"></div>
     </div>
+    <%--<div class="am-form-group">--%>
+        <%--<label for="spicyLevel">麻辣等级</label>--%>
+        <%--<select id="spicyLevel" name="spicyLevel">--%>
+            <%--<option value="1">1</option>--%>
+            <%--<option value="2">2</option>--%>
+            <%--<option value="3">3</option>--%>
+            <%--<option value="4">4</option>--%>
+            <%--<option value="5">5</option>--%>
+        <%--</select>--%>
+    <%--</div>--%>
+    <%--<div class="am-form-group">--%>
+        <%--<label for="hotLevel">火爆程度</label>--%>
+        <%--<select id="hotLevel" name="hotLevel">--%>
+            <%--<option value="1">1</option>--%>
+            <%--<option value="2">2</option>--%>
+            <%--<option value="3">3</option>--%>
+            <%--<option value="4">4</option>--%>
+            <%--<option value="5">5</option>--%>
+        <%--</select>--%>
+    <%--</div>--%>
     <div class="am-form-group">
         <label for="dishPrice2">大份价格</label>
         <input type="number" id="dishPrice2" name="dishPrice2"  placeholder="填写菜品大份的价格">
     </div>
-    <div class="am-form-group">
-        <label for="dishOrigin">产地</label>
-        <input type="text" id="dishOrigin" name="dishOrigin" placeholder="红酒系列请填写产地">
-    </div>
+    <%--<div class="am-form-group">--%>
+        <%--<label for="dishOrigin">产地</label>--%>
+        <%--<input type="text" id="dishOrigin" name="dishOrigin" placeholder="红酒系列请填写产地">--%>
+    <%--</div>--%>
     <div class="am-form-group">
         <label for="dishCapacity">容量</label>
         <input type="number" id="dishCapacity" name="dishCapacity" placeholder="请填写容量">
     </div>
-    <div class="am-form-group">
-        <label for="dishUnit">计量单位</label>
-        <input type="text" id="dishUnit" name="dishUnit" placeholder="请填写计量单位" required>
-    </div>
-    <div class="am-form-group">
-        <label for="dishGroup">菜品系列分组</label>
-        <select id="dishGroup" name="dishGroup"><option value="1">1</option></select>
-    </div>
+    <%--<div class="am-form-group">--%>
+        <%--<label for="dishGroup">菜品系列分组</label>--%>
+        <%--<select id="dishGroup" name="dishGroup"><option value="1">1</option></select>--%>
+    <%--</div>--%>
     <div class="am-form-group">
         <label for="dishOrder">菜品排列顺序</label>
         <input type="number" id="dishOrder" name="dishOrder" placeholder="请填写菜品排列顺序">
@@ -154,7 +158,7 @@
                 var r = new FileReader();
                 r.readAsDataURL(file); //Base64
                 $(r).load(function(){
-                    $('#img_div').html('<img src="'+ this.result +'" alt="" />');
+                    $('#img_div').html('<img width="120" height="120" src="'+ this.result +'" alt="" />');
                 });
             }
 

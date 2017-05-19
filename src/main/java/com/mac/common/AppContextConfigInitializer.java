@@ -7,7 +7,7 @@ import java.util.Properties;
 
 /**
  * 功能：项目环境配置处理
- * 作者： yangyan
+ * 作者： machao
  * 时间： 2014/10/30 .
  */
 public class AppContextConfigInitializer {

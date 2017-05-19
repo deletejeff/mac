@@ -133,7 +133,8 @@
                 <prop key="hibernate.c3p0.idle_test_period">0</prop>
                 <prop key="hibernate.c3p0.timeout">0</prop>
                 <prop key="hibernate.c3p0.validate">true</prop>
-                <prop key="hibernate.connection.url">jdbc:mysql://115.28.45.153:3306/mac</prop>
+                <!--<prop key="hibernate.connection.url">jdbc:mysql://115.28.45.153:3306/mac</prop>-->
+                <prop key="hibernate.connection.url">jdbc:mysql://192.168.1.1:3306/mac</prop>
                 <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
             </props>
         </property>

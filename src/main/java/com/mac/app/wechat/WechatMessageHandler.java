@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * 功能：微信公众号消息处理
- * 作者： yangyan
+ * 作者： machao
  * 时间： 2014/9/12 .
  */
 public class WechatMessageHandler extends DefaultMessageHandlerImpl {

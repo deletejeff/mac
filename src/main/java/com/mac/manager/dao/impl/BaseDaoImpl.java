@@ -22,7 +22,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA. User: yangyan Date: 13-11-18 Time: 下午9:09 To
+ * Created with IntelliJ IDEA. User: machao Date: 13-11-18 Time: 下午9:09 To
  * change this template use File | Settings | File Templates.
  *
  * @param <T>  对象类型

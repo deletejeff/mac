@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * 功能：在请求具有此注解的方法时自己插入日志
- * 作者： yangyan
+ * 作者： machao
  * 时间： 2014/9/5 .
  */
 @Target(ElementType.METHOD)//这个标注应用于类

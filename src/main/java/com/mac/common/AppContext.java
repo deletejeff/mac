@@ -2,7 +2,7 @@ package com.mac.common;
 
 /**
  * 功能：项目运行时环境或全局设置
- * 作者： yangyan
+ * 作者： machao
  * 时间： 2014/7/28 .
  */
 public class AppContext

@@ -1,7 +1,7 @@
 package com.mac.common.bean;
 
 /**
- * 分页对象，包含页码，每页条数，总条数 User: yangyan Date: 13-11-18 Time: 下午8:59 To change this
+ * 分页对象，包含页码，每页条数，总条数 User: machao Date: 13-11-18 Time: 下午8:59 To change this
  * template use File | Settings | File Templates.
  */
 public class Page {

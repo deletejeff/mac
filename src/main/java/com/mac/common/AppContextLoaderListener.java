@@ -10,7 +10,7 @@ import javax.servlet.ServletContextEvent;
 
 /**
  * 功能：继承 SpringContext 默认上下文监听器，启动后配置运行环境需要的共享资源
- * 作者： yangyan
+ * 作者： machao
  * 时间： 2014/8/29 .
  */
 public class AppContextLoaderListener extends ContextLoaderListener {

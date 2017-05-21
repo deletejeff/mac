@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1135171905">
-    <data-source source="LOCAL" name="MySQL - mac@localhost" uuid="d2228a30-3087-44ab-92b4-b20a2d349007">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="MySQL - mac@47.94.92.170" uuid="6c9f04d5-7c3f-460a-bb02-b13f800921e3">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/mac</jdbc-url>
+      <jdbc-url>jdbc:mysql://47.94.92.170:3306/mac</jdbc-url>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
@@ -13,21 +13,22 @@
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
       </driver-properties>
-      <libraries />
     </data-source>
-    <data-source source="LOCAL" name="MySQL - mac@115.28.45.153" uuid="6c9f04d5-7c3f-460a-bb02-b13f800921e3">
+    <data-source source="LOCAL" name="sessionFactory/Hibernate" uuid="09ec364b-46f6-4e60-8ce5-3d38df956cae">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/src/main/resources/applicationContext.xml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://115.28.45.153:3306/mac</jdbc-url>
+      <jdbc-url>jdbc:mysql://47.94.92.170:3306/mac</jdbc-url>
       <driver-properties>
+        <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
         <property name="characterEncoding" value="utf8" />
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
       </driver-properties>
-      <libraries />
     </data-source>
   </component>
 </project>

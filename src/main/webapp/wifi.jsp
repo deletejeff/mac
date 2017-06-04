@@ -12,7 +12,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
     <!-- 唤起微信的js  必须的 -->
-    <script type="text/javascript" src="https://wifi.weixin.qq.com/resources/js/wechatticket/wechatutil.js" ></script>
+    <%--<script type="text/javascript" src="https://wifi.weixin.qq.com/resources/js/wechatticket/wechatutil.js" ></script>--%>
     <script type="text/javascript" src="resources/jquery/jquery-1.9.1.min.js" ></script>
     <script type="text/javascript" src="resources/jquery/jquery.md5.js" ></script>
     <script type="text/javascript">
@@ -67,7 +67,7 @@
         //注册回调函数
         function jsonpCallback(result){
             if(result && result.success){
-                alert('WeChat will call up : ' + result.success + '  data:' + result.data);
+//                alert('WeChat will call up : ' + result.success + '  data:' + result.data);
                 var ua=navigator.userAgent;
                 if (ua.indexOf("iPhone") != -1 ||ua.indexOf("iPod")!=-1||ua.indexOf("iPad") != -1) {   //iPhone
                     document.location = result.data;
@@ -89,7 +89,6 @@
                 + "&extend=" + extend
                 + "&timestamp=" + timestamp
                 + "&sign=" + sign;
-console.log(url);
             //如果sign后面的参数有值，则是新3.1发起的流程
             if(authUrl && shopId){
                 url = "https://wifi.weixin.qq.com/operator/callWechat.xhtml?appId=" + appId
@@ -143,7 +142,7 @@ console.log(url);
     var mac = "aa:aa:aa:aa:aa:aa";
     var ssid = "WX_weparty";
     var bssid = "ff:ff:ff:ff:ff:ff";
-    var sign = $.md5(appId + extend + timestamp + shopId + authUrl + mac + ssid + secretkey);
+    var sign = $.md5(appId + extend + timestamp + shopId + authUrl + mac + ssid + bssid + secretkey);
     console.log("appId:"+appId);
     console.log("extend:"+extend);
     console.log("timestamp:"+timestamp);
@@ -170,6 +169,9 @@ console.log(url);
          * timestamp	是	时间戳使用毫秒
          * sign	是	请求参数签名，具体计算方法见下方说明
          */
+//        var weixinUrl = 'weixin://connectToFreeWifi/?apKey=_p33beta&appId='+appId+'&shopId='+shopId+'&authUrl='+authUrl+'&extend='+extend+'&timestamp='+timestamp+'&sign='+sign;
+//        window.location=weixinUrl;
+
         Wechat_GotoRedirect(appId, extend, timestamp, sign, shopId, authUrl, mac, ssid, bssid);
     }
 </script>
